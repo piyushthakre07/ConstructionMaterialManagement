@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 
 import com.app.model.MaterialCategary;
 @Repository
-public interface IMaterialCategaryDao extends JpaRepository<MaterialCategary, Long> {
-	/* List<MaterialCategary> findAll(); */
+public interface IMaterialCategaryDao extends JpaRepository<MaterialCategary, Long> {	
 }

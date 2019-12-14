@@ -9,5 +9,8 @@ import com.app.model.MaterialCategary;
 public interface IMaterialCategaryService {
 	public List<MaterialCategary> getallmaterialcategary();
 
-	public StatusBean saveMaterialcategary(MaterialCategaryBean materialCategaryBeanRequest);
+	public StatusBean saveOrUpdateMaterialcategary(MaterialCategaryBean materialCategaryBeanRequest);
+	
+	StatusBean deleteMaterialcategary(Long materialCategaryId);
+
 }
