@@ -14,6 +14,7 @@ import com.app.model.Sites;
 import com.app.model.User;
 import com.app.module.saledetails.dao.IMaterialConsumptionDao;
 import com.app.module.saledetails.service.IMaterialConsumptionService;
+import com.app.utility.GenericConstant;
 
 @Service
 public class MaterialConsumptionImpl implements IMaterialConsumptionService {
@@ -46,14 +47,14 @@ public class MaterialConsumptionImpl implements IMaterialConsumptionService {
 				dailyMaterialConsumption.setSites(sites);
 				materialConsumptionDao.save(dailyMaterialConsumption);
 				statusBean.setStatus(true);
-				statusBean.setMessage("Success");
+				statusBean.setMessage(GenericConstant.SUCCESS);
 			} else {
 				statusBean.setStatus(false);
-				statusBean.setMessage("fail");
+				statusBean.setMessage(GenericConstant.FAIL);
 			}
 		} catch (Exception e) {
 			statusBean.setStatus(false);
-			statusBean.setMessage("Internal Server Error");
+			statusBean.setMessage(GenericConstant.SERVERERROR);
 		}
 		return statusBean;
 	}
