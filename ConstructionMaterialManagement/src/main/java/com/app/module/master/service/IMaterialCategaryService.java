@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.app.beans.MaterialCategaryBean;
 import com.app.beans.StatusBean;
-import com.app.model.MaterialCategary;
 
 public interface IMaterialCategaryService {
 	public List<MaterialCategaryBean> getallmaterialcategary();

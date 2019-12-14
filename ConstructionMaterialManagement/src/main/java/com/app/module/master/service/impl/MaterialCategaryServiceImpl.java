@@ -16,7 +16,7 @@ import com.app.module.master.service.IMaterialCategaryService;
 import com.app.utility.GenericConstant;
 
 @Service
-public class MaterialCategaryImpl implements IMaterialCategaryService {
+public class MaterialCategaryServiceImpl implements IMaterialCategaryService {
 
 	@Autowired
 	IMaterialCategaryDao materialCategaryDao;

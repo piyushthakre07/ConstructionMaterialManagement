@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.beans.ItemsBean;
+import com.app.beans.MaterialCategaryBean;
 import com.app.beans.StatusBean;
+import com.app.beans.UnitsBean;
 import com.app.model.Items;
 import com.app.model.MaterialCategary;
 import com.app.module.master.dao.IItemsDao;
@@ -28,6 +30,16 @@ public class ItemsServiceImpl implements IItemsService {
 		return listItems.stream().map(item -> {
 			ItemsBean itemBean = new ItemsBean();
 			BeanUtils.copyProperties(item, itemBean);
+			if (item.getMaterialCategary() != null) {
+				MaterialCategaryBean materialCategaryBean = new MaterialCategaryBean();
+				BeanUtils.copyProperties(item.getMaterialCategary(), materialCategaryBean);
+				itemBean.setMaterialCategary(materialCategaryBean);
+			}
+			if (item.getUnit() != null) {
+				UnitsBean unitsBean = new UnitsBean();
+				BeanUtils.copyProperties(item.getUnit(), unitsBean);
+				itemBean.setUnit(unitsBean);
+			}
 			return itemBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
 
