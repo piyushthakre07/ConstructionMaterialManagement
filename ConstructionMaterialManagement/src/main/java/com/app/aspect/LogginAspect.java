@@ -19,7 +19,7 @@ public class LogginAspect {
 
 	@Pointcut(value = "execution(* com.app.module.*.*.*(..))")
 	public void myPointcut() {
-		// point cut for intercept request for com.affinion.gce.member
+		// point cut for intercept request for com.app.module
 	}
 
 	@Before("myPointcut()")
