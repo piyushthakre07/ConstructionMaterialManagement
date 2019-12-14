@@ -3,7 +3,6 @@ package com.app.module.master.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class MaterialCategaryController {
 	@GetMapping(value = "/getallmaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getallmaterialcategary() {
 		List<MaterialCategaryBean> list = materialCategaryService.getallmaterialcategary();
-		return new Gson().toJson(list) ;
+		return new Gson().toJson(list);
 	}
 
 	@PostMapping(value = "/saveMaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
