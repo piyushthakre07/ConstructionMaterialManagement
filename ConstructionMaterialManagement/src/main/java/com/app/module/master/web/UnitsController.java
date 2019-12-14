@@ -16,27 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.beans.VendorBean;
+import com.app.beans.UnitsBean;
 import com.app.beans.StatusBean;
-import com.app.module.master.service.IVendorService;
+import com.app.module.master.service.IUnitsService;
 import com.google.gson.Gson;
 
 @RestController
-@RequestMapping("/vendor")
-public class VendorController {
+@RequestMapping("/units")
+public class UnitsController {
 
 	@Autowired
-	IVendorService vendorService;
+	IUnitsService unitsService;
 
-	@GetMapping(value = "/getAllVendor", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getAllVendor() {
-		List<VendorBean> list = vendorService.getAllVendor();
+	@GetMapping(value = "/getAllUnits", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getAllUnits() {
+		List<UnitsBean> list = unitsService.getAllUnits();
 		return new Gson().toJson(list);
 	}
 
-	@PostMapping(value = "/saveVendor", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> saveVendor(@RequestBody VendorBean vendorBeanRequest) {
-		StatusBean statusBean = vendorService.saveOrUpdateVendor(vendorBeanRequest);
+	@PostMapping(value = "/saveUnits", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> saveUnits(@RequestBody UnitsBean unitsBeanRequest) {
+		StatusBean statusBean = unitsService.saveOrUpdateUnits(unitsBeanRequest);
 
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
@@ -45,9 +45,9 @@ public class VendorController {
 
 	}
 
-	@PutMapping(value = "/updateVendor", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> updateVendor(@RequestBody VendorBean vendorBeanRequest) {
-		StatusBean statusBean = vendorService.saveOrUpdateVendor(vendorBeanRequest);
+	@PutMapping(value = "/updateUnits", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> updateUnits(@RequestBody UnitsBean unitsBeanRequest) {
+		StatusBean statusBean = unitsService.saveOrUpdateUnits(unitsBeanRequest);
 
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
@@ -56,9 +56,9 @@ public class VendorController {
 
 	}
 
-	@DeleteMapping(value = "/deleteVendor/{vendorId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> deleteVendor(@PathVariable("vendorId") Long vendorId) {
-		StatusBean statusBean = vendorService.deleteVendor(vendorId);
+	@DeleteMapping(value = "/deleteUnits/{unitsId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> deleteUnits(@PathVariable("unitsId") Long unitsId) {
+		StatusBean statusBean = unitsService.deleteUnits(unitsId);
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
 		else
