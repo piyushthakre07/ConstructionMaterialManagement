@@ -7,7 +7,7 @@ import com.app.beans.StatusBean;
 import com.app.model.MaterialCategary;
 
 public interface IMaterialCategaryService {
-	public List<MaterialCategary> getallmaterialcategary();
+	public List<MaterialCategaryBean> getallmaterialcategary();
 
 	public StatusBean saveOrUpdateMaterialcategary(MaterialCategaryBean materialCategaryBeanRequest);
 	

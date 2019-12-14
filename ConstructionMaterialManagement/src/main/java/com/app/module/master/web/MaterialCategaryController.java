@@ -3,6 +3,7 @@ package com.app.module.master.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.beans.MaterialCategaryBean;
 import com.app.beans.StatusBean;
-import com.app.model.MaterialCategary;
 import com.app.module.master.service.IMaterialCategaryService;
+import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/materialcategary")
@@ -28,10 +29,10 @@ public class MaterialCategaryController {
 	@Autowired
 	IMaterialCategaryService materialCategaryService;
 
-	@GetMapping(value = "getallmaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/getallmaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getallmaterialcategary() {
-		List<MaterialCategary> list = materialCategaryService.getallmaterialcategary();
-		return list.toString();
+		List<MaterialCategaryBean> list = materialCategaryService.getallmaterialcategary();
+		return new Gson().toJson(list) ;
 	}
 
 	@PostMapping(value = "/saveMaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
