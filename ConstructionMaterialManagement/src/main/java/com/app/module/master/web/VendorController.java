@@ -35,8 +35,7 @@ public class VendorController {
 	}
 
 	@PostMapping(value = "/saveVendor", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> saveVendor(
-			@RequestBody VendorBean siteBeanRequest) {
+	public @ResponseBody ResponseEntity<StatusBean> saveVendor(@RequestBody VendorBean siteBeanRequest) {
 		StatusBean statusBean = siteService.saveOrUpdateVendor(siteBeanRequest);
 
 		if (statusBean.isStatus())
@@ -47,8 +46,7 @@ public class VendorController {
 	}
 
 	@PutMapping(value = "/updateVendor", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> updateVendor(
-			@RequestBody VendorBean siteBeanRequest) {
+	public @ResponseBody ResponseEntity<StatusBean> updateVendor(@RequestBody VendorBean siteBeanRequest) {
 		StatusBean statusBean = siteService.saveOrUpdateVendor(siteBeanRequest);
 
 		if (statusBean.isStatus())
@@ -59,14 +57,12 @@ public class VendorController {
 	}
 
 	@DeleteMapping(value = "/deleteVendor/{siteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> deleteVendor(
-			@PathVariable("siteId") Long siteId) {
+	public @ResponseBody ResponseEntity<StatusBean> deleteVendor(@PathVariable("siteId") Long siteId) {
 		StatusBean statusBean = siteService.deleteVendor(siteId);
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(statusBean, HttpStatus.INTERNAL_SERVER_ERROR);
-
 	}
 
 }

@@ -9,7 +9,7 @@ public interface IVendorService {
 	public List<VendorBean> getAllVendor();
 
 	public StatusBean saveOrUpdateVendor(VendorBean vendorBeanRequest);
-	
+
 	StatusBean deleteVendor(Long vendorId);
 
 }
