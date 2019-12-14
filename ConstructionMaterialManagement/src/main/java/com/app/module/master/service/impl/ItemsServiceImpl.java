@@ -14,6 +14,7 @@ import com.app.beans.StatusBean;
 import com.app.beans.UnitsBean;
 import com.app.model.Items;
 import com.app.model.MaterialCategary;
+import com.app.model.Units;
 import com.app.module.master.dao.IItemsDao;
 import com.app.module.master.service.IItemsService;
 import com.app.utility.GenericConstant;
@@ -52,10 +53,15 @@ public class ItemsServiceImpl implements IItemsService {
 			Items item = new Items();
 			if (itemsBean != null) {
 				BeanUtils.copyProperties(itemsBean, item);
-				MaterialCategary materialCategary = new MaterialCategary();
 				if (itemsBean.getMaterialCategary() != null) {
+					MaterialCategary materialCategary = new MaterialCategary();
 					materialCategary.setMaterialCategaryId(itemsBean.getMaterialCategary().getMaterialCategaryId());
 					item.setMaterialCategary(materialCategary);
+				}
+				if(itemsBean.getUnit()!=null) {
+					Units units=new Units();
+					units.setUnitId(itemsBean.getUnit().getUnitId());
+					item.setUnit(units);
 				}
 				itemsDao.save(item);
 				statusBean.setStatus(true);
