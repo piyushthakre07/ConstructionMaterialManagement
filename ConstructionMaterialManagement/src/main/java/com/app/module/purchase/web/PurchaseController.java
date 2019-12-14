@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.beans.DailyMaterialConsumptionBean;
 import com.app.beans.PurchaseBean;
 import com.app.beans.StatusBean;
 import com.app.module.purchase.service.IPurchaseService;
@@ -23,7 +22,7 @@ public class PurchaseController {
 	IPurchaseService purchaseService;
 
 	@PostMapping(value = "/purchaseIteam", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<?> saveMaterialConsumption(
+	public @ResponseBody ResponseEntity<StatusBean> saveMaterialConsumption(
 			@RequestBody PurchaseBean purchaseBeanRequest) {
 		StatusBean statusBean = purchaseService.purchaseItem(purchaseBeanRequest);
 		if (statusBean.isStatus())
