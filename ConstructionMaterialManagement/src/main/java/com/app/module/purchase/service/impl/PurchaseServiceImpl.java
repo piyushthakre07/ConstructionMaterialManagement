@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.beans.PurchaseBean;
 import com.app.beans.StatusBean;
+import com.app.model.Items;
 import com.app.model.Purchase;
 import com.app.model.Vendor;
 import com.app.module.purchase.dao.IPurchaseDao;
@@ -28,6 +29,9 @@ public class PurchaseServiceImpl implements IPurchaseService {
 				Vendor vendor = new Vendor();
 				vendor.setVendorId(purchaseBeanRequest.getVendor().getVendorId());
 				purchase.setVendor(vendor);
+				Items item=new  Items();
+				item.setItemId(purchaseBeanRequest.getItem().getItemId());
+				purchase.setItem(item);
 				purchaseDao.save(purchase);
 				statusBean.setStatus(true);
 				statusBean.setMessage(GenericConstant.SUCCESS);
