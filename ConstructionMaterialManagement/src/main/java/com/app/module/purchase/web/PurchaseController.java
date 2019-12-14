@@ -22,7 +22,7 @@ public class PurchaseController {
 	IPurchaseService purchaseService;
 
 	@PostMapping(value = "/purchaseIteam", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> saveMaterialConsumption(
+	public @ResponseBody ResponseEntity<StatusBean> purchaseIteam(
 			@RequestBody PurchaseBean purchaseBeanRequest) {
 		StatusBean statusBean = purchaseService.purchaseItem(purchaseBeanRequest);
 		if (statusBean.isStatus())

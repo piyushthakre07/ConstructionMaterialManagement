@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LogginAspect {
 
-	@Pointcut(value = "execution(* com.app.*.*.*(..))")
+	@Pointcut(value = "execution(* com.app.module.*.*.*(..))")
 	public void myPointcut() {
 		// point cut for intercept request for com.affinion.gce.member
 	}
@@ -34,7 +34,7 @@ public class LogginAspect {
 				+ joinPoint.getSignature().getName());
 	}
 	
-    @AfterThrowing(pointcut = "execution(* com.app.*.*.*(..))", throwing = "ex")
+    @AfterThrowing(pointcut = "execution(* com.app.module.*.*.*(..))", throwing = "ex")
     public void logError(JoinPoint joinPoint,Exception ex) {
     	log.error("Error Class :" + joinPoint.getTarget().getClass() + ":: Method Name: "
 				+ joinPoint.getSignature().getName()+"::Error: "+ex.getMessage());
