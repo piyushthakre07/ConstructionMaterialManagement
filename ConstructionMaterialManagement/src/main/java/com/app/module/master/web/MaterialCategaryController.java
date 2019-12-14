@@ -19,8 +19,8 @@ public class MaterialCategaryController {
 	IMaterialCategaryService materialCategaryService;
 	
 	@GetMapping(value = "getallmaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getCustomerNames(){
-		List<MaterialCategary> list=materialCategaryService.getallmaterialcategary();
+	public String getCustomerNames() {
+		List<MaterialCategary> list = materialCategaryService.getallmaterialcategary();
 		return list.toString();
 	}
 	

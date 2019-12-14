@@ -34,7 +34,7 @@ public class LogginAspect {
 				+ joinPoint.getSignature().getName());
 	}
 	
-    @AfterThrowing(pointcut = "execution(* com.affinion.gce.member.*.*.*(..))", throwing = "ex")
+    @AfterThrowing(pointcut = "execution(* com.app.*.*.*(..))", throwing = "ex")
     public void logError(JoinPoint joinPoint,Exception ex) {
     	log.error("Error Class :" + joinPoint.getTarget().getClass() + ":: Method Name: "
 				+ joinPoint.getSignature().getName()+"::Error: "+ex.getMessage());
