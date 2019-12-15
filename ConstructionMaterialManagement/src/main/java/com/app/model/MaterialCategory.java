@@ -22,6 +22,7 @@ import lombok.Data;
 @Table(name = "material_category_master")
 public class MaterialCategory {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "material_category_id", unique = true, nullable = false)
