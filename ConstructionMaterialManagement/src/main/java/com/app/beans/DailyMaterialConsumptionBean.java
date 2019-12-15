@@ -19,7 +19,7 @@ public class DailyMaterialConsumptionBean {
 
 	private SitesBeans sites;
 
-	private MaterialCategaryBean materialCategary;
+	private MaterialCategoryBean materialCategory;
 
 	private ItemsBean item;
 

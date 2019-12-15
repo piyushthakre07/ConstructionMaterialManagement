@@ -6,11 +6,11 @@ import lombok.Data;
 
 
 @Data
-public class MaterialCategaryBean {
+public class MaterialCategoryBean {
 
-	private long materialCategaryId;
+	private long materialCategoryId;
 
-	private String materialCategaryName;
+	private String materialCategoryName;
 
 	private Set<ItemsBean> items;
 }

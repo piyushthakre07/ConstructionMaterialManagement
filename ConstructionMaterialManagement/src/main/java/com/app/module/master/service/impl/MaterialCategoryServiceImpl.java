@@ -8,37 +8,37 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.beans.MaterialCategaryBean;
+import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
-import com.app.model.MaterialCategary;
-import com.app.module.master.dao.IMaterialCategaryDao;
-import com.app.module.master.service.IMaterialCategaryService;
+import com.app.model.MaterialCategory;
+import com.app.module.master.dao.IMaterialCategoryDao;
+import com.app.module.master.service.IMaterialCategoryService;
 import com.app.utility.GenericConstant;
 
 @Service
-public class MaterialCategaryServiceImpl implements IMaterialCategaryService {
+public class MaterialCategoryServiceImpl implements IMaterialCategoryService {
 
 	@Autowired
-	IMaterialCategaryDao materialCategaryDao;
+	IMaterialCategoryDao materialCategoryDao;
 
 	@Override
-	public List<MaterialCategaryBean> getallmaterialcategary() {
-		List<MaterialCategary> listMaterialCategary = materialCategaryDao.findAll();
-		return listMaterialCategary.stream().map(materialCategary -> {
-			MaterialCategaryBean materialCategaryBean = new MaterialCategaryBean();
-			BeanUtils.copyProperties(materialCategary, materialCategaryBean);
-			return materialCategaryBean;
+	public List<MaterialCategoryBean> getallmaterialcategory() {
+		List<MaterialCategory> listMaterialCategory = materialCategoryDao.findAll();
+		return listMaterialCategory.stream().map(materialCategory -> {
+			MaterialCategoryBean materialCategoryBean = new MaterialCategoryBean();
+			BeanUtils.copyProperties(materialCategory, materialCategoryBean);
+			return materialCategoryBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	@Override
-	public StatusBean saveOrUpdateMaterialcategary(MaterialCategaryBean materialCategaryBeanRequest) {
+	public StatusBean saveOrUpdateMaterialcategory(MaterialCategoryBean materialCategoryBeanRequest) {
 		StatusBean statusBean = new StatusBean();
 		try {
-			MaterialCategary materialCategary = new MaterialCategary();
-			if (materialCategaryBeanRequest != null) {
-				BeanUtils.copyProperties(materialCategaryBeanRequest, materialCategary);
-				materialCategaryDao.save(materialCategary);
+			MaterialCategory materialCategory = new MaterialCategory();
+			if (materialCategoryBeanRequest != null) {
+				BeanUtils.copyProperties(materialCategoryBeanRequest, materialCategory);
+				materialCategoryDao.save(materialCategory);
 				statusBean.setStatus(true);
 				statusBean.setMessage(GenericConstant.SUCCESS);
 			} else {
@@ -53,11 +53,11 @@ public class MaterialCategaryServiceImpl implements IMaterialCategaryService {
 
 	}
 	@Override
-	public StatusBean deleteMaterialcategary(Long materialCategaryId) {
+	public StatusBean deleteMaterialcategory(Long materialCategoryId) {
 		StatusBean statusBean = new StatusBean();
 		try {
-			if (materialCategaryId != null) {
-				materialCategaryDao.deleteById(materialCategaryId);
+			if (materialCategoryId != null) {
+				materialCategoryDao.deleteById(materialCategoryId);
 				statusBean.setStatus(true);
 				statusBean.setMessage(GenericConstant.SUCCESS);
 			} else {

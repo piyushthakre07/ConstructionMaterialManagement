@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.beans.ItemsBean;
-import com.app.beans.MaterialCategaryBean;
+import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
 import com.app.beans.UnitsBean;
 import com.app.model.Items;
-import com.app.model.MaterialCategary;
+import com.app.model.MaterialCategory;
 import com.app.model.Units;
 import com.app.module.master.dao.IItemsDao;
 import com.app.module.master.service.IItemsService;
@@ -31,10 +31,10 @@ public class ItemsServiceImpl implements IItemsService {
 		return listItems.stream().map(item -> {
 			ItemsBean itemBean = new ItemsBean();
 			BeanUtils.copyProperties(item, itemBean);
-			if (item.getMaterialCategary() != null) {
-				MaterialCategaryBean materialCategaryBean = new MaterialCategaryBean();
-				BeanUtils.copyProperties(item.getMaterialCategary(), materialCategaryBean);
-				itemBean.setMaterialCategary(materialCategaryBean);
+			if (item.getMaterialCategory() != null) {
+				MaterialCategoryBean materialCategoryBean = new MaterialCategoryBean();
+				BeanUtils.copyProperties(item.getMaterialCategory(), materialCategoryBean);
+				itemBean.setMaterialCategory(materialCategoryBean);
 			}
 			if (item.getUnit() != null) {
 				UnitsBean unitsBean = new UnitsBean();
@@ -53,10 +53,10 @@ public class ItemsServiceImpl implements IItemsService {
 			Items item = new Items();
 			if (itemsBean != null) {
 				BeanUtils.copyProperties(itemsBean, item);
-				if (itemsBean.getMaterialCategary() != null) {
-					MaterialCategary materialCategary = new MaterialCategary();
-					materialCategary.setMaterialCategaryId(itemsBean.getMaterialCategary().getMaterialCategaryId());
-					item.setMaterialCategary(materialCategary);
+				if (itemsBean.getMaterialCategory() != null) {
+					MaterialCategory materialCategory = new MaterialCategory();
+					materialCategory.setMaterialCategoryId(itemsBean.getMaterialCategory().getMaterialCategoryId());
+					item.setMaterialCategory(materialCategory);
 				}
 				if(itemsBean.getUnit()!=null) {
 					Units units=new Units();

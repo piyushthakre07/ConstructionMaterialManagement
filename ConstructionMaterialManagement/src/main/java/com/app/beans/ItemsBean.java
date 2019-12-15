@@ -9,7 +9,7 @@ public class ItemsBean {
 
 	private String itemName;
 
-	private MaterialCategaryBean materialCategary;
+	private MaterialCategoryBean materialCategory;
 
 	private UnitsBean unit;
 

@@ -19,18 +19,18 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "material_categary_master")
-public class MaterialCategary {
+@Table(name = "material_category_master")
+public class MaterialCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "material_categary_id", unique = true, nullable = false)
-	private long materialCategaryId;
+	@Column(name = "material_category_id", unique = true, nullable = false)
+	private long materialCategoryId;
 
-	@Column(name = "material_categary_name", length = 50)
-	private String materialCategaryName;
+	@Column(name = "material_category_name", length = 50)
+	private String materialCategoryName;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "materialCategary")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "materialCategory")
 	private Set<Items> items;
 	
 	@Column(name = "created_by")

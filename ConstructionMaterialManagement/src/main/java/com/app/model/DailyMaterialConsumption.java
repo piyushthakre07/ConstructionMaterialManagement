@@ -45,8 +45,8 @@ public class DailyMaterialConsumption {
 	private Sites sites;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "material_categary_id")
-	private MaterialCategary materialCategary;
+	@JoinColumn(name = "material_category_id")
+	private MaterialCategory materialCategory;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")

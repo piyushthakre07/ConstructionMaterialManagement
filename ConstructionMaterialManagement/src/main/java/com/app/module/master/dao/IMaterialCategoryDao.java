@@ -3,7 +3,7 @@ package com.app.module.master.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.model.MaterialCategary;
+import com.app.model.MaterialCategory;
 @Repository
-public interface IMaterialCategaryDao extends JpaRepository<MaterialCategary, Long> {	
+public interface IMaterialCategoryDao extends JpaRepository<MaterialCategory, Long> {	
 }

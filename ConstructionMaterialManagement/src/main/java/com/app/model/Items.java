@@ -31,8 +31,8 @@ public class Items {
 	private String itemName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "material_categary_id")
-	private MaterialCategary materialCategary;
+	@JoinColumn(name = "material_category_id")
+	private MaterialCategory materialCategory;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "unit_id")

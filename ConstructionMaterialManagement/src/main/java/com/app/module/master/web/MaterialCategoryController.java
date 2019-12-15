@@ -16,28 +16,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.beans.MaterialCategaryBean;
+import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
-import com.app.module.master.service.IMaterialCategaryService;
+import com.app.module.master.service.IMaterialCategoryService;
 import com.google.gson.Gson;
 
 @RestController
-@RequestMapping("/materialcategary")
-public class MaterialCategaryController {
+@RequestMapping("/materialcategory")
+public class MaterialCategoryController {
 
 	@Autowired
-	IMaterialCategaryService materialCategaryService;
+	IMaterialCategoryService materialCategoryService;
 
-	@GetMapping(value = "/getallmaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getallmaterialcategary() {
-		List<MaterialCategaryBean> list = materialCategaryService.getallmaterialcategary();
+	@GetMapping(value = "/getallmaterialcategory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getallmaterialcategory() {
+		List<MaterialCategoryBean> list = materialCategoryService.getallmaterialcategory();
 		return new Gson().toJson(list);
 	}
 
-	@PostMapping(value = "/saveMaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> saveMaterialcategary(
-			@RequestBody MaterialCategaryBean materialCategaryBeanRequest) {
-		StatusBean statusBean = materialCategaryService.saveOrUpdateMaterialcategary(materialCategaryBeanRequest);
+	@PostMapping(value = "/saveMaterialcategory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> saveMaterialcategory(
+			@RequestBody MaterialCategoryBean materialCategoryBeanRequest) {
+		StatusBean statusBean = materialCategoryService.saveOrUpdateMaterialcategory(materialCategoryBeanRequest);
 
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
@@ -46,10 +46,10 @@ public class MaterialCategaryController {
 
 	}
 
-	@PutMapping(value = "/updateMaterialcategary", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> updateMaterialcategary(
-			@RequestBody MaterialCategaryBean materialCategaryBeanRequest) {
-		StatusBean statusBean = materialCategaryService.saveOrUpdateMaterialcategary(materialCategaryBeanRequest);
+	@PutMapping(value = "/updateMaterialcategory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> updateMaterialcategory(
+			@RequestBody MaterialCategoryBean materialCategoryBeanRequest) {
+		StatusBean statusBean = materialCategoryService.saveOrUpdateMaterialcategory(materialCategoryBeanRequest);
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
 		else
@@ -57,10 +57,10 @@ public class MaterialCategaryController {
 
 	}
 
-	@DeleteMapping(value = "/deleteMaterialcategary/{materialCategaryId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<StatusBean> deleteMaterialcategary(
-			@PathVariable("materialCategaryId") Long materialCategaryId) {
-		StatusBean statusBean = materialCategaryService.deleteMaterialcategary(materialCategaryId);
+	@DeleteMapping(value = "/deleteMaterialcategory/{materialCategoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<StatusBean> deleteMaterialcategory(
+			@PathVariable("materialCategoryId") Long materialCategoryId) {
+		StatusBean statusBean = materialCategoryService.deleteMaterialcategory(materialCategoryId);
 		if (statusBean.isStatus())
 			return new ResponseEntity<>(statusBean, HttpStatus.OK);
 		else
