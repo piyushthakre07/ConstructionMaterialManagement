@@ -27,7 +27,7 @@ public class ItemsController {
 	@Autowired
 	IItemsService itemsService;
 
-	@GetMapping(value = "getAllItems", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/getAllItems", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllItems() {
 		List<ItemsBean> list = itemsService.getAllItems();
 		return list.toString();

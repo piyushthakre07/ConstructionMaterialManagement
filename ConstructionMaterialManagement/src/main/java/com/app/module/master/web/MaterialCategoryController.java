@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
@@ -28,6 +29,13 @@ public class MaterialCategoryController {
 	@Autowired
 	IMaterialCategoryService materialCategoryService;
 
+	@GetMapping(value = "/showMaterialCategory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView getAllItems() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/materialCategory");
+		return mv;
+	}
+	
 	@GetMapping(value = "/getallmaterialcategory", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getallmaterialcategory() {
 		List<MaterialCategoryBean> list = materialCategoryService.getallmaterialcategory();
