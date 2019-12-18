@@ -15,10 +15,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter @Getter
 @Table(name = "items_master")
 public class Items {
 
@@ -30,11 +31,11 @@ public class Items {
 	@Column(name = "item_name", length = 50)
 	private String itemName;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "material_category_id")
 	private MaterialCategory materialCategory;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "unit_id")
 	private Units unit;
 	

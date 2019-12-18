@@ -15,10 +15,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter @Getter
 @Table(name = "contractors_master")
 public class Contractor {
 
@@ -33,7 +34,7 @@ public class Contractor {
 	@Column(name = "address", length = 500)
 	private String address;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contractor")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "contractor")
 	private Set<Sites> sites;
 	
 	@Column(name = "created_by")

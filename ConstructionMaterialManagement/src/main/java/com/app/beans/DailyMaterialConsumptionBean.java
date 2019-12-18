@@ -2,9 +2,10 @@ package com.app.beans;
 
 import java.util.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter @Getter
 public class DailyMaterialConsumptionBean {
 
 	private long materialConsumptionId;

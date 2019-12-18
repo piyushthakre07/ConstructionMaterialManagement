@@ -15,10 +15,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter @Getter
 @Table(name = "roles_master")
 public class Role {
 
@@ -30,7 +31,7 @@ public class Role {
 	@Column(name = "role_name", length = 50)
 	private String roleName;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "role")
 	private Set<User> user;
 	
 	@Column(name = "created_by")

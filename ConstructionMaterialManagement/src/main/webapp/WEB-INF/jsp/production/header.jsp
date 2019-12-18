@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>ConstructionManagement! | </title>
+    <title>Construction Management! | </title>
 
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html"> Dashboard</a></li>
+                      <li><a href="/home/dashboard"> Dashboard</a></li>
                     </ul>
                   </li>
                    <li><a><i class="fa fa-edit"></i> Daily Consumption Details <span class="fa fa-chevron-down"></span></a>
@@ -95,13 +95,13 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Masters <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="form.html">Units Master</a></li>
-                      <li><a href="form.html">Material Category Master</a></li>
-                      <li><a href="form.html">Items Master</a></li>
-                      <li><a href="form.html">Vendor Master</a></li>
-                      <li><a href="form.html">Role Master</a></li>
+                      <li><a href="/units/showUnits">Units Master</a></li>
+                      <li><a href="/materialcategory/showMaterialCategory">Material Category Master</a></li>
+                      <li><a href="/item/showItems">Items Master</a></li>
+                      <li><a href="/vendor/showVendor">Vendor Master</a></li>
+                      <li><a href="/role/showRole">Role Master</a></li>
                       <li><a href="form.html">User Master</a></li>
-                      <li><a href="form.html">Contractor Master</a></li>
+                      <li><a href="/contractor/showContractor">Contractor Master</a></li>
                       <li><a href="form.html">Sites Master</a></li>
                     </ul>
                   </li>

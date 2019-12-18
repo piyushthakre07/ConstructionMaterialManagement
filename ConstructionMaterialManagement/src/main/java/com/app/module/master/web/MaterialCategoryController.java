@@ -30,7 +30,7 @@ public class MaterialCategoryController {
 	IMaterialCategoryService materialCategoryService;
 
 	@GetMapping(value = "/showMaterialCategory", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ModelAndView getAllItems() {
+	public ModelAndView showMaterialCategory() {
 		ModelAndView mv=new ModelAndView();
         mv.setViewName("/production/materialCategory");
 		return mv;

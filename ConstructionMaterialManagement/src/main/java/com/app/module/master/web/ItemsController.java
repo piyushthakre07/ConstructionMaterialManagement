@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.ItemsBean;
+import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
 import com.app.module.master.service.IItemsService;
+import com.google.gson.Gson;
 
 @RestController
 @RequestMapping("/item")
@@ -26,11 +29,20 @@ public class ItemsController {
 
 	@Autowired
 	IItemsService itemsService;
-
+	
+	@GetMapping(value = "/showItems", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showItems() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/itemsMaster");
+		return mv;
+	}
+	
+	
 	@GetMapping(value = "/getAllItems", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllItems() {
 		List<ItemsBean> list = itemsService.getAllItems();
-		return list.toString();
+		
+		return new Gson().toJson(list);
 	}
 
 	@PostMapping(value = "/saveItems", produces = MediaType.APPLICATION_JSON_VALUE)

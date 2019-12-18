@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.ContractorBean;
 import com.app.beans.StatusBean;
@@ -28,6 +29,13 @@ public class ContractorController {
 	@Autowired
 	IContractorService contractorService;
 
+	@GetMapping(value = "/showContractor", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showVendor() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/contractorMaster");
+		return mv;
+	}
+	
 	@GetMapping(value = "/getAllContractor", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllContractor() {
 		List<ContractorBean> list = contractorService.getAllContractor();

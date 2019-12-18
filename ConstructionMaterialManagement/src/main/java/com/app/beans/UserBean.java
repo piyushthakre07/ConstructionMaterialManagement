@@ -1,9 +1,10 @@
 package com.app.beans;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Setter @Getter
 public class UserBean {
 
 	private long userId;

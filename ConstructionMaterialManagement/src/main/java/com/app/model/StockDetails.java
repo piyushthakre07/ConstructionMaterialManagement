@@ -15,10 +15,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter @Getter
 @Table(name = "stock_details")
 public class StockDetails {
 	
@@ -27,7 +28,7 @@ public class StockDetails {
 	@Column(name = "stock_details_id", unique = true, nullable = false)
 	private long stockDetailsId;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "item_id")
 	private Items item;
 	

@@ -27,6 +27,7 @@ public class ItemsServiceImpl implements IItemsService {
 
 	@Override
 	public List<ItemsBean> getAllItems() {
+		try {
 		List<Items> listItems = itemsDao.findAll();
 		return listItems.stream().map(item -> {
 			ItemsBean itemBean = new ItemsBean();
@@ -34,15 +35,24 @@ public class ItemsServiceImpl implements IItemsService {
 			if (item.getMaterialCategory() != null) {
 				MaterialCategoryBean materialCategoryBean = new MaterialCategoryBean();
 				BeanUtils.copyProperties(item.getMaterialCategory(), materialCategoryBean);
+				//materialCategoryBean.setItems(null);
 				itemBean.setMaterialCategory(materialCategoryBean);
+				List<MaterialCategoryBean> materialCategoryList=new ArrayList<>();
+				materialCategoryList.add(materialCategoryBean);
+				itemBean.setItems(materialCategoryList);
 			}
 			if (item.getUnit() != null) {
 				UnitsBean unitsBean = new UnitsBean();
 				BeanUtils.copyProperties(item.getUnit(), unitsBean);
+				unitsBean.setItems(null);
 				itemBean.setUnit(unitsBean);
 			}
+			
 			return itemBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
+		}catch (Exception e) {
+			return null;
+		}
 
 	}
 

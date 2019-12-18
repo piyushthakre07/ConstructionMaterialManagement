@@ -1,16 +1,15 @@
 package com.app.beans;
 
-import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Setter @Getter
 public class RoleBean {
 
 	private long roleId;
 
 	private String roleName;
 
-	private Set<UserBean> user;
+	/* private Set<UserBean> user; */
 
 }

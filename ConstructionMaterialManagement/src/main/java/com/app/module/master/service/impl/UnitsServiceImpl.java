@@ -27,6 +27,7 @@ public class UnitsServiceImpl implements IUnitsService {
 		return listUnits.stream().map(units -> {
 			UnitsBean unitsBean = new UnitsBean();
 			BeanUtils.copyProperties(units, unitsBean);
+			unitsBean.setItems(null);
 			return unitsBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
 	}

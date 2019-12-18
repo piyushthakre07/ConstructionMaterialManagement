@@ -1,8 +1,9 @@
 package com.app.beans;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter @Getter
 public class VendorBean {
 
 	private long vendorId;

@@ -2,15 +2,16 @@ package com.app.beans;
 
 import java.util.Set;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Setter @Getter
 public class MaterialCategoryBean {
 
 	private long materialCategoryId;
 
 	private String materialCategoryName;
 
-	private Set<ItemsBean> items;
+	/* private Set<ItemsBean> items; */
 }

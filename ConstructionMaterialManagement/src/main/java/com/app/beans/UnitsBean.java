@@ -2,9 +2,10 @@ package com.app.beans;
 
 import java.util.Set;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter @Getter
 public class UnitsBean {
 
 	private long unitId;

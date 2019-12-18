@@ -16,9 +16,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Setter @Getter
 @Table(name = "units_master")
 public class Units {
 
@@ -30,7 +32,7 @@ public class Units {
 	@Column(name = "unit_name", length = 50)
 	private String unitName;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "unit")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "unit")
 	private Set<Items> items;
 	
 	@Column(name = "created_by")

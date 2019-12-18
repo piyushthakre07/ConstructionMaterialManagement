@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.RoleBean;
 import com.app.beans.StatusBean;
@@ -28,6 +29,13 @@ public class RoleController {
 	@Autowired
 	IRoleService roleService;
 
+	@GetMapping(value = "/showRole", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showVendor() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/roleMaster");
+		return mv;
+	}
+	
 	@GetMapping(value = "/getAllRole", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllRole() {
 		List<RoleBean> list = roleService.getAllRole();
