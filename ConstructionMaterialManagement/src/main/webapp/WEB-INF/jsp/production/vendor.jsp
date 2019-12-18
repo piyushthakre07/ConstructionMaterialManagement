@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
-
     <title>ConstructionManagement! | </title>
  <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
