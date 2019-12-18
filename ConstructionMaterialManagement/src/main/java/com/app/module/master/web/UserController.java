@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.UserBean;
 import com.app.beans.StatusBean;
@@ -28,6 +29,13 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 
+	@GetMapping(value = "/showUser", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showVendor() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/userMaster");
+		return mv;
+	}
+	
 	@GetMapping(value = "/getAllUser", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllUser() {
 		List<UserBean> list = userService.getAllUser();

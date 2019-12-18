@@ -9,13 +9,12 @@
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>ConstructionManagement! | </title>
-
 		
  <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
-	$("#roleTableContainer").jsGrid({
+	$("#sitesTableContainer").jsGrid({
 	       width: "100%",
 	       filtering: true,
 	       editing: true,
@@ -32,12 +31,12 @@ $(document).ready(function () {
 	               $.ajax({
 	                   type: 'GET',
 	                   contentType: "application/json; charset=utf-8",
-	                   url: '/role/getAllRole',
+	                   url: '/sites/getAllSites',
 	                   dataType: "json",
 	                   data:filter,
 	                     success: function (data) {
 	                     	var data1 = $.grep(data, function(data) {
-	                            return (!filter.roleName || (data.roleName+'').toUpperCase().indexOf(filter.roleName.toUpperCase()) > -1)
+	                            return (!filter.siteName || (data.siteName+'').toUpperCase().indexOf(filter.siteName.toUpperCase()) > -1)
 	                       });   
                    	d.resolve(data1);
 	                   },
@@ -51,7 +50,7 @@ $(document).ready(function () {
 	         insertItem: function(insertingClient) {
 	    	       $.ajax({
 	    	                   type: 'POST',
-	    	                   url: '/role/saveRole',
+	    	                   url: '/sites/saveSite',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(insertingClient),
@@ -66,7 +65,7 @@ $(document).ready(function () {
 	    	   updateItem: function(updatingClient) {
 	    	   	$.ajax({
 	    	                   type: 'PUT',
-	    	                   url: '/role/updateRole',
+	    	                   url: '/sites/updateSite',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(updatingClient),
@@ -81,7 +80,7 @@ $(document).ready(function () {
 	    	   deleteItem: function(deletingClient) {
 	    	   	$.ajax({
 	    	                   type: 'DELETE',
-	    	                   url: '/role/deleteRole/'+deletingClient.roleId,
+	    	                   url: '/sites/deleteSite/'+deletingClient.siteId,
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   success: function (data) {
@@ -94,8 +93,9 @@ $(document).ready(function () {
 	       },
 	   
 	       fields: [
-	    	       { name: "roleId", type: "hidden",  width:75, title: "Role Id"},
-		           { name: "roleName", type: "text",  width:75, title: "Role"},
+	    	       { name: "siteId", type: "hidden",  width:75, title: "Site Id"},
+		           { name: "siteName", type: "text",  width:75, title: "Site Name"},
+		           { name: "siteAddress", type: "text",  width:75, title: "Site Address"},
 		           { type: "control" } 
 		       ]
 		       });
@@ -123,14 +123,14 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Role <small>Master</small></h2>
+                    <h2>Site <small>Master</small></h2>
                     <div class="clearfix"></div>
                   </div>
                   
                   
                   <div class="x_content">
                     <div class="table-responsive">
-					<div id="roleTableContainer"></div>
+					<div id="sitesTableContainer"></div>
 				</div>
 				</div>
                 </div>

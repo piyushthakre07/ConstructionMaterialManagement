@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.SitesBeans;
 import com.app.beans.StatusBean;
@@ -28,6 +29,13 @@ public class SiteController {
 	@Autowired
 	ISitesService siteService;
 
+	@GetMapping(value = "/showSite", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showVendor() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/sitesMaster");
+		return mv;
+	}
+	
 	@GetMapping(value = "/getAllSites", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllSites() {
 		List<SitesBeans> list = siteService.getAllSite();

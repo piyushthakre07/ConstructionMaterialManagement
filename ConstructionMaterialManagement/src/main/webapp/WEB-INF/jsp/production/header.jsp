@@ -98,9 +98,9 @@
                       <li><a href="/item/showItems">Items Master</a></li>
                       <li><a href="/vendor/showVendor">Vendor Master</a></li>
                       <li><a href="/role/showRole">Role Master</a></li>
-                      <li><a href="form.html">User Master</a></li>
+                      <li><a href="/user/showUser">User Master</a></li>
                       <li><a href="/contractor/showContractor">Contractor Master</a></li>
-                      <li><a href="form.html">Sites Master</a></li>
+                      <li><a href="/sites/showSite">Sites Master</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>Ghaphical Reports <span class="fa fa-chevron-down"></span></a>

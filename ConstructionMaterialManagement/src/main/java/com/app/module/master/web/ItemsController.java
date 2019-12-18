@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.ItemsBean;
-import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
 import com.app.module.master.service.IItemsService;
 import com.google.gson.Gson;
