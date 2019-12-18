@@ -24,8 +24,9 @@ $(document).ready(function () {
 	       autoload: true,
 	       inserting: true,
 	       deleting:true,
-	       pageSize: 10,
-	       pageButtonCount: 10,
+	       clearFilterButton: true,  
+	       pageSize: 5,
+	       pageButtonCount: 5,
 	       controller: {
 	           loadData: function(filter) {
 	           	var d = $.Deferred();
@@ -60,7 +61,7 @@ $(document).ready(function () {
 	    	                   data: JSON.stringify(insertingClient),
 	    	                   success: function (data) {
 	    	                   	alert("insertion done successfully");
-	    	                   	$("#itemTableContainer").jsGrid("refresh");
+	    	                   	window.location.reload();
 	    	                   }
 	    	   	});
 	    	       
@@ -103,13 +104,13 @@ $(document).ready(function () {
 		           { name: "materialCategory.materialCategoryName", type: "text",  type: "hidden", 
 		        	   width:75, title: "Material Category"  
 		           },
-                    { name: "materialCategory", type: "text",  
+                   /*  { name: "materialCategory", type: "text",  
 		        	   editTemplate: function(value, item) {
 		        		   return this._editPicker = $("<select><option value="+value.materialCategoryId+">"+value.materialCategoryName+"</option></select>");
 			    		},
 			    		
 		        	   width:75, title: "Material Category"  
-		           },
+		           }, */
 		        
 		           
 		          

@@ -10,4 +10,6 @@ public class TotalCountBean {
 	private long vendorTtl;
 
 	private long userTtl;
+	
+	private long sitesTtl;
 }

@@ -67,10 +67,8 @@
               <div class="menu_section">
                
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/home/dashboard"> Dashboard</a></li>
-                    </ul>
+                  <li><a  href="/home/dashboard"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                   
                   </li>
                    <li><a><i class="fa fa-edit"></i> Daily Consumption Details <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

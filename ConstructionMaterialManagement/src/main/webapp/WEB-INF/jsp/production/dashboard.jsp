@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <head>
@@ -51,21 +51,21 @@
           <div class="tile_count">
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Contractor</span>
-              <div class="count">2500</div>
+              <div class="count">${totalCount.contractorTtl}</div>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> Total Vendor</span>
-              <div class="count">50</div>
+              <div class="count">${totalCount.vendorTtl}</div>
               
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count green">500</div>
+              <div class="count green">${totalCount.userTtl}</div>
              
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Sites</span>
-              <div class="count">800</div>
+              <div class="count">${totalCount.sitesTtl}</div>
             </div>
           </div>
         </div>

@@ -24,8 +24,8 @@ $(document).ready(function () {
 	       autoload: true,
 	       inserting: true,
 	       deleting:true,
-	       pageSize: 10,
-	       pageButtonCount: 10,
+	       pageSize: 5,
+	       pageButtonCount: 5,
 	       controller: {
 	           loadData: function(filter) {
 	           	var d = $.Deferred();
