@@ -13,19 +13,19 @@
 
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+      <link href="/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/css/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/css/green.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/css/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/css/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.css" rel="stylesheet">
@@ -83,7 +83,7 @@
                   </li>
                    <li><a><i class="fa fa-edit"></i>Purchase <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="form.html">Purchase Item</a></li>
+                    <li><a href="/purchase/showPurchaseItem">Purchase Item</a></li>
                     </ul>
                   </li>
                     <li><a><i class="fa fa-edit"></i>Return <span class="fa fa-chevron-down"></span></a>
@@ -142,7 +142,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Vijay
+                    <img src="/images/img.jpg" alt="">Vijay
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -158,4 +158,5 @@
             </nav>
           </div>
         </div>
+        
         
