@@ -34,6 +34,40 @@
 
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
+    <script>
+    $("#purchaseFormId").on("submit", function(e) {
+		if($("#otpVerificationFormId").valid()){
+		e.preventDefault();
+		var formData = $('#purchaseFormId').serializeArray();
+		var s = '';
+		var data = {};
+		for (s in formData) {
+			data[formData[s]['name']] = formData[s]['value']
+		}
+		$.ajax({
+			type : 'POST',
+			url : '/purchase/purchaseIteam',
+			data : JSON.stringify(data),
+			contentType : "application/json",
+			
+			success : function(result) {
+				var resultSting = JSON.stringify(result);
+				var jsonResult = JSON.parse(resultSting);
+				if(jsonResult.status){
+				alert(jsonResult.message)
+				
+				}
+			},
+			error : function(result) {
+				var resultSting = JSON.stringify(result);
+				var jsonResult = JSON.parse(resultSting);
+				alert(jsonResult.message);
+				
+			}
+		});
+		}
+	});
+    </script>
   </head>
 
   <body class="nav-md">
@@ -58,14 +92,14 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form action="/purchase/purchaseIteam" method="post" class="form-horizontal form-label-left">
-                    <%-- 
+                    <form id="purchaseFormId" class="form-horizontal form-label-left">
+                   
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Select Vendor</label>
                         <div class="col-md-6 col-sm-9 ">
 				    <select name="vendor.vendorId" class="select2_single form-control" tabindex="-1">
-					    <c:forEach items="${vendors}" var="item">
-					            <option value="${item.vendorId}">${item.vendorName}</option>
+					    <c:forEach items="${vendors}" var="vendors">
+					            <option value="${vendors.vendorId}">${vendors.vendorName}</option>
 					    </c:forEach>
 					</select>
 		                          
@@ -79,7 +113,7 @@
 					            <option value="${item.itemId}">${item.itemName}</option>
 					    </c:forEach>
 					</select>
-                        </div> --%>
+                        </div> 
                       </div>
                        <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Quantity</label>

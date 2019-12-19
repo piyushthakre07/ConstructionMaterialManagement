@@ -47,7 +47,7 @@ public class PurchaseController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/purchaseIteam", method = RequestMethod.POST,
+	@PostMapping(value = "/purchaseIteam",
 	        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, 
 	        produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody ResponseEntity<StatusBean> purchaseIteam(
