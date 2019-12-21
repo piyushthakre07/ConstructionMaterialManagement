@@ -15,7 +15,7 @@
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>ConstructionManagement! | </title>
-
+     <script src="/js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -35,14 +35,25 @@
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
     <script>
+    $(document).ready(function() {
     $("#purchaseFormId").on("submit", function(e) {
-		if($("#otpVerificationFormId").valid()){
 		e.preventDefault();
 		var formData = $('#purchaseFormId').serializeArray();
 		var s = '';
 		var data = {};
+		var vendor={};
+		var item={};
 		for (s in formData) {
-			data[formData[s]['name']] = formData[s]['value']
+			if(formData[s]['name']=="vendorId"){
+				vendor['vendorId']=formData[s]['value'];
+				data['vendor']=vendor;
+			}else
+				if(formData[s]['name']=="itemId"){
+					item['itemId']=formData[s]['value'];
+					data['item']=item;
+		    }else{
+			 data[formData[s]['name']] = formData[s]['value']
+			}
 		}
 		$.ajax({
 			type : 'POST',
@@ -65,8 +76,9 @@
 				
 			}
 		});
-		}
+		
 	});
+    });
     </script>
   </head>
 
@@ -97,7 +109,7 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Select Vendor</label>
                         <div class="col-md-6 col-sm-9 ">
-				    <select name="vendor.vendorId" class="select2_single form-control" tabindex="-1">
+				    <select name="vendorId" class="select2_single form-control" tabindex="-1">
 					    <c:forEach items="${vendors}" var="vendors">
 					            <option value="${vendors.vendorId}">${vendors.vendorName}</option>
 					    </c:forEach>
@@ -108,7 +120,7 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Select Item</label>
                         <div class="col-md-6 col-sm-9 ">
-                           <select name="item.itemId" class="select2_single form-control" tabindex="-1">
+                           <select name="itemId" class="select2_single form-control" tabindex="-1">
 					    <c:forEach items="${items}" var="item">
 					            <option value="${item.itemId}">${item.itemName}</option>
 					    </c:forEach>
@@ -118,7 +130,7 @@
                        <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Quantity</label>
                         <div class="col-md-6 col-sm-9 ">
-                          <input type="number" class="form-control" placeholder="Quantity">
+                          <input type="number" name="quantity" class="form-control" placeholder="Quantity">
                         </div>
                       </div>
                        <div class="form-group row ">

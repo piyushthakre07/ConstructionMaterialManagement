@@ -48,8 +48,8 @@ public class PurchaseController {
 	}
 	
 	@PostMapping(value = "/purchaseIteam",
-	        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, 
-	        produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	        consumes = MediaType.APPLICATION_JSON_VALUE, 
+	        produces = { MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody ResponseEntity<StatusBean> purchaseIteam(
 			@RequestBody PurchaseBean purchaseBeanRequest) {
 		StatusBean statusBean = purchaseService.purchaseItem(purchaseBeanRequest);
