@@ -96,6 +96,8 @@ $(document).ready(function () {
 	    	       { name: "siteId", type: "hidden",  width:75, title: "Site Id"},
 		           { name: "siteName", type: "text",  width:75, title: "Site Name"},
 		           { name: "siteAddress", type: "text",  width:75, title: "Site Address"},
+		           { name: "contractor.contractorName", type: "hidden",  width:75, title: "Contractor Name"},
+		           { name: "contractor.contractorId", type: "text",  width:75, title: "Contractor Id"},
 		           { type: "control" } 
 		       ]
 		       });

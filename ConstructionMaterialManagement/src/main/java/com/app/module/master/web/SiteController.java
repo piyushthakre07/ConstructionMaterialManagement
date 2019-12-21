@@ -41,6 +41,12 @@ public class SiteController {
 		List<SitesBeans> list = siteService.getAllSite();
 		return new Gson().toJson(list);
 	}
+	
+	@GetMapping(value = "/getSitesByConstractorId/{contractorId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getSitesByConstractorId(@PathVariable("contractorId") Long contractorId) {
+		List<SitesBeans> list = siteService.getSitesByConstractorId(contractorId);
+		return new Gson().toJson(list);
+	}
 
 	@PostMapping(value = "/saveSite", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<StatusBean> saveSite(

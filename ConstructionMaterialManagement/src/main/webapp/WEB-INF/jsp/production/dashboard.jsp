@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-
+<html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dashboard</title>
-</head>
-<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -15,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>ConstructionManagement! | </title>
+    <title>Dashboard! | </title>
 
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -51,21 +47,22 @@
           <div class="tile_count">
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Contractor</span>
-              <div class="count">${totalCount.contractorTtl}</div>
+              <div class="count"><a href="/contractor/showContractor">${totalCount.contractorTtl}</a></div>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> Total Vendor</span>
-              <div class="count">${totalCount.vendorTtl}</div>
+              <div class="count"><a href="/vendor/showVendor">${totalCount.vendorTtl}</a></div>
+              
               
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count green">${totalCount.userTtl}</div>
+              <div class="count green"><a href="/user/showUser">${totalCount.userTtl}</a></div>
              
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Sites</span>
-              <div class="count">${totalCount.sitesTtl}</div>
+              <div class="count"><a href="/sites/showSite">${totalCount.sitesTtl}</a></div>
             </div>
           </div>
         </div>

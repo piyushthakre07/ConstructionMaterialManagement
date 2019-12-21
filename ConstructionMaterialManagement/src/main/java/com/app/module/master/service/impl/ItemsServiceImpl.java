@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.beans.ContractorBean;
 import com.app.beans.ItemsBean;
 import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;
@@ -35,7 +36,6 @@ public class ItemsServiceImpl implements IItemsService {
 			if (item.getMaterialCategory() != null) {
 				MaterialCategoryBean materialCategoryBean = new MaterialCategoryBean();
 				BeanUtils.copyProperties(item.getMaterialCategory(), materialCategoryBean);
-				//materialCategoryBean.setItems(null);
 				itemBean.setMaterialCategory(materialCategoryBean);
 				List<MaterialCategoryBean> materialCategoryList=new ArrayList<>();
 				materialCategoryList.add(materialCategoryBean);
@@ -56,6 +56,7 @@ public class ItemsServiceImpl implements IItemsService {
 
 	}
 
+	
 	@Override
 	public StatusBean saveOrUpdateItems(ItemsBean itemsBean) {
 		StatusBean statusBean = new StatusBean();
@@ -108,4 +109,21 @@ public class ItemsServiceImpl implements IItemsService {
 
 	}
 
+	@Override
+	public List<ItemsBean> getItemsByMaterialCategoryId(Long materialCategoryId) {
+		List<Items> listItems = itemsDao.findAll();
+		return listItems.stream().map(item -> {
+			ItemsBean itemBean = new ItemsBean();
+			BeanUtils.copyProperties(item, itemBean);
+			if (item.getMaterialCategory() != null) {
+				MaterialCategoryBean materialCategoryBean = new MaterialCategoryBean();
+				BeanUtils.copyProperties(item.getMaterialCategory(), materialCategoryBean);
+				itemBean.setMaterialCategory(materialCategoryBean);
+			}
+			return itemBean;
+		}).filter(item -> item.getMaterialCategory().getMaterialCategoryId() == materialCategoryId)
+				.collect(Collectors.toCollection(ArrayList::new));
+
+	}
+	
 }

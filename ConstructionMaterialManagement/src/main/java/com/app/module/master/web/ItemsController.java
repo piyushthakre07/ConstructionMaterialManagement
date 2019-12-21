@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.ItemsBean;
+import com.app.beans.SitesBeans;
 import com.app.beans.StatusBean;
 import com.app.module.master.service.IItemsService;
 import com.google.gson.Gson;
@@ -36,6 +37,11 @@ public class ItemsController {
 		return mv;
 	}
 	
+	@GetMapping(value = "/getItemsByMaterialCategoryId/{materialCategoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getItemsByMaterialCategoryId(@PathVariable("materialCategoryId") Long materialCategoryId) {
+		List<ItemsBean> list = itemsService.getItemsByMaterialCategoryId(materialCategoryId);
+		return new Gson().toJson(list);
+	}
 	
 	@GetMapping(value = "/getAllItems", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllItems() {

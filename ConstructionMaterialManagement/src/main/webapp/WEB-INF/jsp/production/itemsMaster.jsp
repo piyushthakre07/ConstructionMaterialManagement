@@ -101,8 +101,10 @@ $(document).ready(function () {
 	    	       { name: "itemId", type: "hidden",  width:75, title: "Item Id"},
 		           { name: "itemName", type: "text",  width:75, title: "Item Name"},
 		           { name: "unit.unitName", type: "hidden",  width:75, title: "Unit Name"},
-		           { name: "materialCategory.materialCategoryName", type: "text",  type: "hidden", 
-		        	   width:75, title: "Material Category"  
+		           { name: "materialCategory.materialCategoryName", type: "hidden", title: "Material Category Name"}, 
+		           { name: "unit.unitId", type: "number",  width:75, title: "Unit Id"},
+		           { name: "materialCategory.materialCategoryId", type: "text",  type: "number", 
+		        	   width:75, title: "Material Category Id"  
 		           },
                    /*  { name: "materialCategory", type: "text",  
 		        	   editTemplate: function(value, item) {

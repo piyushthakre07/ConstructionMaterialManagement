@@ -7,4 +7,5 @@ public class GenericConstant {
 	public static final String CREDIT="CR";
 	public static final String DEBIT="DR";
 	public static final String PURCHASE_TRANSACTION_TYPE="PURCHASE";
+	public static final String SALE="SALE";
 }

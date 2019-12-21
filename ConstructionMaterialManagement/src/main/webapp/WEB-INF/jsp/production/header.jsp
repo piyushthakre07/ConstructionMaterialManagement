@@ -67,31 +67,33 @@
               <div class="menu_section">
                
                 <ul class="nav side-menu">
-                  <li><a  href="/home/dashboard"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a  href="/home/dashboard"><i class=""></i> Home <span ></span></a>
                    
                   </li>
-                   <li><a><i class="fa fa-edit"></i> Daily Consumption Details <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class=""></i> Daily Consumption Details <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Daily Consumption</a></li>
+                      <li><a href="/consumption/addConsumption">Daily Consumption</a></li>
+                       <li><a href="/consumption/viewConsumption">Material Consumption Details</a></li>
                       <li><a href="form.html">Daily Consumption Reports</a></li>
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-edit"></i>Stock <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class=""></i>Stock <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     <li><a href="form.html">Itemwise Stock</a></li>
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-edit"></i>Purchase <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class=""></i>Purchase <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="/purchase/showPurchaseItem">Purchase Item</a></li>
+                    <li><a href="/purchase/addPurchaseItem">Add Purchase Item</a></li>
+                    <li><a href="/purchase/viewPurchaseItem">Show Purchase Item</a></li>
                     </ul>
                   </li>
-                    <li><a><i class="fa fa-edit"></i>Return <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class=""></i>Return <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     <li><a href="#">Return Item</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Masters <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class=""></i> Masters <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/units/showUnits">Units Master</a></li>
                       <li><a href="/materialcategory/showMaterialCategory">Material Category Master</a></li>
@@ -103,7 +105,7 @@
                       <li><a href="/sites/showSite">Sites Master</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i>Ghaphical Reports <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class=""></i>Ghaphical Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     <li><a href="#">Stock Reports</a></li>
                      <li><a href="#">Item  Reports</a></li>

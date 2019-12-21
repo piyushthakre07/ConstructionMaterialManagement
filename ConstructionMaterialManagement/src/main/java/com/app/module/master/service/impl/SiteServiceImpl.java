@@ -37,6 +37,21 @@ public class SiteServiceImpl implements ISitesService {
 			return siteBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
 	}
+	
+	@Override
+	public List<SitesBeans> getSitesByConstractorId(long contractorId) {
+		List<Sites> listSites = siteDao.findAll();
+		return listSites.stream().map(site -> {
+			SitesBeans siteBean = new SitesBeans();
+			BeanUtils.copyProperties(site, siteBean);
+			if (site.getContractor() != null) {
+				ContractorBean contractorBean = new ContractorBean();
+				BeanUtils.copyProperties(site.getContractor(), contractorBean);
+				siteBean.setContractor(contractorBean);
+			}
+			return siteBean;
+		}).filter(site->site.getContractor().getContractorId()==contractorId).collect(Collectors.toCollection(ArrayList::new));
+	}
 
 	@Override
 	public StatusBean saveOrUpdateSite(SitesBeans siteBeanRequest) {

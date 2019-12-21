@@ -12,4 +12,6 @@ public interface IItemsService {
 	
 	StatusBean deleteItems(Long itemId);
 
+	public List<ItemsBean> getItemsByMaterialCategoryId(Long materialCategoryId);
+
 }

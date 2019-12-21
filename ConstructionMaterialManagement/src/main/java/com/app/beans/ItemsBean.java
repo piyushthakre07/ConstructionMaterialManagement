@@ -13,6 +13,7 @@ public class ItemsBean {
 	private String itemName;
 
 	private MaterialCategoryBean materialCategory;
+	
 	private List<MaterialCategoryBean> items;
 
 	private UnitsBean unit;

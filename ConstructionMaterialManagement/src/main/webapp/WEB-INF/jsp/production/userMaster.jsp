@@ -97,6 +97,8 @@ $(document).ready(function () {
 	    	       { name: "fullName", type: "text",  width:75, title: "Full Name"},
 	    	       { name: "userName", type: "text",  width:75, title: "User Name"},
 	    	       { name: "password", type: "text",  width:75, title: "Password"},
+	    	       { name: "role.roleName", type: "hidden",  width:75, title: "Role"},
+	    	       { name: "role.roleId", type: "number",  width:75, title: "Role Id"},
 	    	       { type: "control" } 
 		       ]
 		       });

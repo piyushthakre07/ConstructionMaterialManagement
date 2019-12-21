@@ -11,6 +11,8 @@ public class DailyMaterialConsumptionBean {
 	private long materialConsumptionId;
 
 	private Date consumptionDate;
+	
+	private String consumptionDateString;
 
 	private String workType;
 

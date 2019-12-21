@@ -41,19 +41,15 @@
 		var formData = $('#purchaseFormId').serializeArray();
 		var s = '';
 		var data = {};
-		var vendor={};
-		var item={};
 		for (s in formData) {
-			if(formData[s]['name']=="vendorId"){
-				vendor['vendorId']=formData[s]['value'];
-				data['vendor']=vendor;
-			}else
-				if(formData[s]['name']=="itemId"){
-					item['itemId']=formData[s]['value'];
-					data['item']=item;
-		    }else{
+			var fieldName=formData[s]['name'];
+			if(fieldName.indexOf(".") != -1){
+			var innerObjectJson={};
+			innerObjectJson[fieldName.split(".")[1]]=formData[s]['value'];
+				data[fieldName.split(".")[0]]=innerObjectJson;
+		}else{
 			 data[formData[s]['name']] = formData[s]['value']
-			}
+		}
 		}
 		$.ajax({
 			type : 'POST',
@@ -65,7 +61,8 @@
 				var resultSting = JSON.stringify(result);
 				var jsonResult = JSON.parse(resultSting);
 				if(jsonResult.status){
-				alert(jsonResult.message)
+				alert(jsonResult.message);
+				window.location.href = "/purchase/viewPurchaseItem";
 				
 				}
 			},
@@ -109,7 +106,8 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Select Vendor</label>
                         <div class="col-md-6 col-sm-9 ">
-				    <select name="vendorId" class="select2_single form-control" tabindex="-1">
+				    <select name="vendor.vendorId" class="select2_single form-control" tabindex="-1">
+					    <option value="-1">Select</option>
 					    <c:forEach items="${vendors}" var="vendors">
 					            <option value="${vendors.vendorId}">${vendors.vendorName}</option>
 					    </c:forEach>
@@ -120,17 +118,19 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Select Item</label>
                         <div class="col-md-6 col-sm-9 ">
-                           <select name="itemId" class="select2_single form-control" tabindex="-1">
+                           <select name="item.itemId" class="select2_single form-control" tabindex="-1">
+                            <option value="-1">Select</option>
 					    <c:forEach items="${items}" var="item">
 					            <option value="${item.itemId}">${item.itemName}</option>
 					    </c:forEach>
 					</select>
+					
                         </div> 
                       </div>
                        <div class="form-group row ">
                         <label class="control-label col-md-3 col-sm-3 ">Quantity</label>
                         <div class="col-md-6 col-sm-9 ">
-                          <input type="number" name="quantity" class="form-control" placeholder="Quantity">
+                          <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity">
                         </div>
                       </div>
                        <div class="form-group row ">

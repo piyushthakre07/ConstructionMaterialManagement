@@ -1,12 +1,21 @@
 package com.app.module.purchase.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.beans.ContractorBean;
+import com.app.beans.ItemsBean;
 import com.app.beans.PurchaseBean;
 import com.app.beans.StatusBean;
 import com.app.beans.StockDetailsBean;
+import com.app.beans.UnitsBean;
+import com.app.beans.VendorBean;
+import com.app.model.Contractor;
 import com.app.model.Items;
 import com.app.model.Purchase;
 import com.app.model.Vendor;
@@ -24,6 +33,30 @@ public class PurchaseServiceImpl implements IPurchaseService {
 	@Autowired
 	IStockService stockService;
 
+	@Override
+	public List<PurchaseBean> getAllPurchase() {
+		List<Purchase> listPurchase = purchaseDao.findAll();
+		return listPurchase.stream().map(purchase -> {
+			PurchaseBean purchaseBean = new PurchaseBean();
+			BeanUtils.copyProperties(purchase, purchaseBean);
+			if (purchase.getItem() != null) {
+				ItemsBean itemsBean = new ItemsBean();
+				UnitsBean unitsBean = new UnitsBean();
+				BeanUtils.copyProperties(purchase.getItem(), itemsBean);
+				if (purchase.getItem().getUnit() != null)
+					unitsBean.setUnitName(purchase.getItem().getUnit().getUnitName());
+				itemsBean.setUnit(unitsBean);
+				purchaseBean.setItem(itemsBean);
+			}
+			if (purchase.getVendor() != null) {
+				VendorBean vendorBean = new VendorBean();
+				BeanUtils.copyProperties(purchase.getVendor(), vendorBean);
+				purchaseBean.setVendor(vendorBean);
+			}
+			return purchaseBean;
+		}).collect(Collectors.toCollection(ArrayList::new));
+	}
+	
 	@Override
 	public StatusBean purchaseItem(PurchaseBean purchaseBeanRequest) {
 		StatusBean statusBean = new StatusBean();
@@ -56,5 +89,7 @@ public class PurchaseServiceImpl implements IPurchaseService {
 		}
 		return statusBean;
 	}
+	
+	
 
 }

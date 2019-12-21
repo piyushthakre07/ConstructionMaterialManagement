@@ -4,8 +4,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.beans.ItemsBean;
 import com.app.beans.StatusBean;
 import com.app.beans.StockDetailsBean;
+import com.app.model.Items;
 import com.app.model.StockDetails;
 import com.app.module.stockdetails.dao.IStockDetailsDao;
 import com.app.module.stockdetails.service.IStockService;
@@ -22,6 +24,9 @@ IStockDetailsDao stockDetailsDao;
 			StockDetails stockDetails = new StockDetails();
 			if (stockDetailsBean != null) {
 				BeanUtils.copyProperties(stockDetailsBean, stockDetails);
+				Items items=new Items();
+				BeanUtils.copyProperties(stockDetailsBean.getItem(), items);
+				stockDetails.setItem(items);
 				stockDetailsDao.save(stockDetails);
 				statusBean.setStatus(true);
 				statusBean.setMessage(GenericConstant.SUCCESS);

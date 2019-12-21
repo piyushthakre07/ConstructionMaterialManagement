@@ -12,4 +12,6 @@ public interface ISitesService {
 	
 	StatusBean deleteSite(Long siteId);
 
+	List<SitesBeans> getSitesByConstractorId(long contractorId);
+
 }

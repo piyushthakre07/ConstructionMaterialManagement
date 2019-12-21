@@ -11,5 +11,4 @@ public class MaterialCategoryBean {
 
 	private String materialCategoryName;
 
-	/* private Set<ItemsBean> items; */
 }
