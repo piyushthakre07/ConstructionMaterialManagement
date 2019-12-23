@@ -10,6 +10,4 @@ public class RoleBean {
 
 	private String roleName;
 
-	/* private Set<UserBean> user; */
-
 }

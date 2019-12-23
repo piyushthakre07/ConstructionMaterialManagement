@@ -101,6 +101,7 @@
     
     $('#materialCategoryId').on('change',function()
     		{
+    	 $('#openingId').html('');
     		      var selectedMaterialCategoryId=$(this).find('option:selected').val();
     		      $.ajax({
     		             url:'/item/getItemsByMaterialCategoryId/'+selectedMaterialCategoryId,
@@ -120,9 +121,35 @@
     		             }
     		       });
     		});
+    
+ 
+    $('#itemId').on('change',function()
+     {
+    	 $('#openingId').html('');
+    		      var selectedItemId=$(this).find('option:selected').val();
+    		      $.ajax({
+    		             url:'/stock/getStockDetailsByItemId/'+selectedItemId,
+    		             type:'GET',
+    		             dataType:'json',
+    		             contentType: "application/json",
+    		             success: function (data) {
+    		            	 
+    		              if (typeof  data.itemQuantity === 'undefined')
+    		              {
+    		            	  $('#openingId').html('');
+    		              }
+    		               else
+    		            	 $('#openingId').html(data.itemQuantity+" "+data.unitName);
+    		            	
+    		             },
+    		             error:
+    		                function (data) {
+    		                  
+    		             }
+    		       });
+    		});
     });
  
-    
    
     </script>
 </head>
@@ -145,7 +172,7 @@
 						<div class="x_panel">
 							<div class="x_title">
 								<h2>
-									consumption <small>Item</small>
+									Consumption <small>Item</small>
 								</h2>
 								<div class="clearfix"></div>
 							</div>
@@ -209,6 +236,12 @@
 												<option value="-1">Select</option>
 											</select>
 
+										</div>
+									</div>
+									<div class="form-group row ">
+										<label class="control-label col-md-3 col-sm-3 ">Opening</label>
+										<div class="col-md-6 col-sm-9 " id="openingId">
+											
 										</div>
 									</div>
 									<div class="form-group row">

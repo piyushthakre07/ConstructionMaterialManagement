@@ -1,4 +1,4 @@
-package com.app.module.dailyConsumer.dao;
+package com.app.module.dailyconsumer.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

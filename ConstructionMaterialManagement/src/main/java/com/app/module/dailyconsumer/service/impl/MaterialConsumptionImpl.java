@@ -1,4 +1,4 @@
-package com.app.module.dailyConsumer.service.impl;
+package com.app.module.dailyconsumer.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ import com.app.model.Items;
 import com.app.model.MaterialCategory;
 import com.app.model.Sites;
 import com.app.model.User;
-import com.app.module.dailyConsumer.dao.IMaterialConsumptionDao;
-import com.app.module.dailyConsumer.service.IMaterialConsumptionService;
+import com.app.module.dailyconsumer.dao.IMaterialConsumptionDao;
+import com.app.module.dailyconsumer.service.IMaterialConsumptionService;
 import com.app.module.stockdetails.service.IStockService;
 import com.app.utility.GenericConstant;
 

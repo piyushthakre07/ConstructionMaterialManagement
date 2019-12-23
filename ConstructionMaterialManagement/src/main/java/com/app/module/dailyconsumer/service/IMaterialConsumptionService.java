@@ -1,4 +1,4 @@
-package com.app.module.dailyConsumer.service;
+package com.app.module.dailyconsumer.service;
 
 import java.util.List;
 

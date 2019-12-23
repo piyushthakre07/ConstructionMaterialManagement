@@ -8,14 +8,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.beans.ContractorBean;
 import com.app.beans.ItemsBean;
 import com.app.beans.PurchaseBean;
 import com.app.beans.StatusBean;
 import com.app.beans.StockDetailsBean;
 import com.app.beans.UnitsBean;
 import com.app.beans.VendorBean;
-import com.app.model.Contractor;
 import com.app.model.Items;
 import com.app.model.Purchase;
 import com.app.model.Vendor;

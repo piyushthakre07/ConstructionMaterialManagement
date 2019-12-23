@@ -26,7 +26,7 @@ public class DailyMaterialConsumption {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "material_consumption_id", unique = true, nullable = false)
-	private long materialConsumptionId;
+	private Long materialConsumptionId;
 	
 	@Column(name = "consumption_date")
 	private Date consumptionDate;

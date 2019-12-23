@@ -15,6 +15,47 @@
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
+	 var objectDataUnits=[];
+	 var objectDataMaterialCategory=[];
+	 var globle=true;
+	 firstFunction();
+	function firstFunction(){
+	 $.ajax({
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/units/getAllUnits',
+        dataType: "json",
+	}).done(function(data) {
+		 $.each(data,function(key,value){
+        	 var objectData={};
+    		 objectData['Name']=value.unitName;
+    		 objectData['Id']=value.unitId;
+    		 objectDataUnits.push(objectData);
+    		
+        	 });
+		 secondFunction();
+	});
+	}
+	function secondFunction(){
+		
+		 $.ajax({
+	        type: 'GET',
+	        contentType: "application/json; charset=utf-8",
+	        url: '/materialcategory/getallmaterialcategory',
+	        dataType: "json",
+		}).done(function(data) {
+			 $.each(data,function(key,value){
+	        	 var objectData={};
+	        	 objectData['Name']=value.materialCategoryName;
+	        	 objectData['Id']=value.materialCategoryId;
+	        	 objectDataMaterialCategory.push(objectData);
+	    		
+	        	 });
+			 thridFunction();
+		});
+		}
+	
+	function thridFunction(){
 	$("#itemTableContainer").jsGrid({
 	       width: "100%",
 	       filtering: true,
@@ -37,7 +78,6 @@ $(document).ready(function () {
 	                   dataType: "json",
 	                   data:filter,
 	                     success: function (data) {
-	                    	
 	                     	var data1 = $.grep(data, function(data) {
 	                            return (!filter.itemName || (data.itemName+'').toUpperCase().indexOf(filter.itemName.toUpperCase()) > -1)
 	                       });   
@@ -100,27 +140,16 @@ $(document).ready(function () {
 	       fields: [
 	    	       { name: "itemId", type: "hidden",  width:75, title: "Item Id"},
 		           { name: "itemName", type: "text",  width:75, title: "Item Name"},
-		           { name: "unit.unitName", type: "hidden",  width:75, title: "Unit Name"},
-		           { name: "materialCategory.materialCategoryName", type: "hidden", title: "Material Category Name"}, 
-		           { name: "unit.unitId", type: "number",  width:75, title: "Unit Id"},
-		           { name: "materialCategory.materialCategoryId", type: "text",  type: "number", 
-		        	   width:75, title: "Material Category Id"  
-		           },
-                   /*  { name: "materialCategory", type: "text",  
-		        	   editTemplate: function(value, item) {
-		        		   return this._editPicker = $("<select><option value="+value.materialCategoryId+">"+value.materialCategoryName+"</option></select>");
-			    		},
-			    		
+		           { name: "unit.unitId", type: "select", items:objectDataUnits, valueField: "Id",textField: "Name", width:75, title: "Unit Id"},
+		          { name: "materialCategory.materialCategoryId",
+		        	   type: "select", items:objectDataMaterialCategory, valueField: "Id" ,textField: "Name",
 		        	   width:75, title: "Material Category"  
-		           }, */
-		        
-		           
-		          
+		           },
 		           { type: "control" } 
 		       ]
 		       });
 			
-	
+	}
 	
 }); 
 

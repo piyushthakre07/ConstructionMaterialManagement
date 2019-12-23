@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.beans.ContractorBean;
 import com.app.beans.ItemsBean;
 import com.app.beans.MaterialCategoryBean;
 import com.app.beans.StatusBean;

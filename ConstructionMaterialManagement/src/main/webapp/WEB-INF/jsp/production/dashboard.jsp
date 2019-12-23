@@ -75,7 +75,7 @@
            <div class="col-md-6 col-sm-4  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Items Sale</h2>
+                    <h2>Items Stock</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">

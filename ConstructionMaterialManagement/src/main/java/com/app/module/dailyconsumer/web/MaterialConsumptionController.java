@@ -1,4 +1,4 @@
-package com.app.module.dailyConsumer.web;
+package com.app.module.dailyconsumer.web;
 
 import java.util.List;
 
@@ -17,10 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.app.beans.ContractorBean;
 import com.app.beans.DailyMaterialConsumptionBean;
 import com.app.beans.MaterialCategoryBean;
-import com.app.beans.PurchaseBean;
 import com.app.beans.StatusBean;
 import com.app.beans.UserBean;
-import com.app.module.dailyConsumer.service.IMaterialConsumptionService;
+import com.app.module.dailyconsumer.service.IMaterialConsumptionService;
 import com.app.module.master.service.IContractorService;
 import com.app.module.master.service.IItemsService;
 import com.app.module.master.service.IMaterialCategoryService;
@@ -79,7 +78,7 @@ public class MaterialConsumptionController {
 		return new Gson().toJson(list);
 	}
 	@PostMapping(value = "/saveMaterialConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<?> saveMaterialConsumption(
+	public @ResponseBody ResponseEntity<StatusBean> saveMaterialConsumption(
 			@RequestBody DailyMaterialConsumptionBean materialConsumptionBeanRequest) {
 		StatusBean statusBean = materialConsumptionService.saveMaterialConsumption(materialConsumptionBeanRequest);
 		if (statusBean.isStatus())

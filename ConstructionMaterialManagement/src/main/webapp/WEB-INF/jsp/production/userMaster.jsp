@@ -14,6 +14,28 @@
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
+	
+	 var objectDataRole=[];
+	 
+	 firstFunction();
+	function firstFunction(){
+	 $.ajax({
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/role/getAllRole',
+        dataType: "json",
+	}).done(function(data) {
+		 $.each(data,function(key,value){
+        	 var objectData={};
+    		 objectData['Name']=value.roleName;
+    		 objectData['Id']=value.roleId;
+    		 objectDataRole.push(objectData);
+    		
+        	 });
+		 secondFunction();
+	});
+	}
+	function secondFunction(){
 	$("#userTableContainer").jsGrid({
 	       width: "100%",
 	       filtering: true,
@@ -97,12 +119,12 @@ $(document).ready(function () {
 	    	       { name: "fullName", type: "text",  width:75, title: "Full Name"},
 	    	       { name: "userName", type: "text",  width:75, title: "User Name"},
 	    	       { name: "password", type: "text",  width:75, title: "Password"},
-	    	       { name: "role.roleName", type: "hidden",  width:75, title: "Role"},
-	    	       { name: "role.roleId", type: "number",  width:75, title: "Role Id"},
+	    	       
+	    	       { name: "role.roleId", type: "select", items:objectDataRole, valueField: "Id",textField: "Name",  width:75, title: "Role"},
 	    	       { type: "control" } 
 		       ]
 		       });
-			
+	}
 	
 	
 }); 

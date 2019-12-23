@@ -14,6 +14,27 @@
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
+	
+	 var objectDataSites=[];
+	 firstFunction();
+	function firstFunction(){
+	 $.ajax({
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/contractor/getAllContractor',
+        dataType: "json",
+	}).done(function(data) {
+		 $.each(data,function(key,value){
+        	 var objectData={};
+    		 objectData['Name']=value.contractorName;
+    		 objectData['Id']=value.contractorId;
+    		 objectDataSites.push(objectData);
+    		
+        	 });
+		 secondFunction();
+	});
+	}
+	function secondFunction(){
 	$("#sitesTableContainer").jsGrid({
 	       width: "100%",
 	       filtering: true,
@@ -96,13 +117,12 @@ $(document).ready(function () {
 	    	       { name: "siteId", type: "hidden",  width:75, title: "Site Id"},
 		           { name: "siteName", type: "text",  width:75, title: "Site Name"},
 		           { name: "siteAddress", type: "text",  width:75, title: "Site Address"},
-		           { name: "contractor.contractorName", type: "hidden",  width:75, title: "Contractor Name"},
-		           { name: "contractor.contractorId", type: "text",  width:75, title: "Contractor Id"},
+		          { name: "contractor.contractorId", type: "select", items: objectDataSites, valueField: "Id",textField: "Name",  width:75, title: "Contractor"},
 		           { type: "control" } 
 		       ]
 		       });
 			
-	
+	}
 	
 }); 
 

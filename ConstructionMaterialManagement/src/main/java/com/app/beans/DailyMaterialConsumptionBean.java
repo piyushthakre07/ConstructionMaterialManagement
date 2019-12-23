@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter @Getter
 public class DailyMaterialConsumptionBean {
 
-	private long materialConsumptionId;
+	private Long materialConsumptionId;
 
 	private Date consumptionDate;
 	

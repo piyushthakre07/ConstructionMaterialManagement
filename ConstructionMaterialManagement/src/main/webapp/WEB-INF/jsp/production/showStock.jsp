@@ -14,7 +14,7 @@
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
-	$("#purchaseTableContainer").jsGrid({
+	$("#stockTableContainer").jsGrid({
 	       width: "100%",
 	       filtering: true,
 	       editing: false,
@@ -35,12 +35,12 @@ $(document).ready(function () {
 	               $.ajax({
 	                   type: 'GET',
 	                   contentType: "application/json; charset=utf-8",
-	                   url: '/purchase/getAllPurchase',
+	                   url: '/stock/getItemWiseStock',
 	                   dataType: "json",
 	                   data:filter,
 	                     success: function (data) {
 	                     	var data1 = $.grep(data, function(data) {
-	                            return (!filter.purchaseName || (data.purchaseName+'').toUpperCase().indexOf(filter.purchaseName.toUpperCase()) > -1)
+	                            return (!filter.stockName || (data.stockName+'').toUpperCase().indexOf(filter.stockName.toUpperCase()) > -1)
 	                       });   
                    	d.resolve(data1);
 	                   },
@@ -54,17 +54,10 @@ $(document).ready(function () {
 	        
 	       },
 	       fields: [
-	    	       { name: "purchaseId", type: "hidden",  width:75, title: "Purchase Id"},
-		           { name: "item.itemName", type: "hidden",  width:75, title: "Item Name"},
-		           { name: "item.unit.unitName", type: "hidden",  width:75, title: "Unit"},
-		           { name: "vendor.vendorName", type: "hidden",  width:75, title: "Vendor Name"},
-		           { name: "quantity", type: "hidden",  width:75, title: "Quantity"},
-		           { name: "remark", type: "hidden",  width:75, title: "Remark"}
+		           { name: "itemName", type: "hidden",   title: "Item Name"},
+		           { name: "itemQuantity", type: "hidden",   title: "Quantity"},
+		           { name: "unitName", type: "hidden",   title: "Unit"}
 		       ]
-	      
-		      
-			
-	
 	
 }); 
 });
@@ -88,14 +81,13 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Purchase <small>Details</small></h2>
+                    <h2>Item Wise Stock</h2>
                     <div class="clearfix"></div>
                   </div>
                   
-                  <a href="/purchase/addPurchaseItem"><div class="btn btn-round btn-success">Add Purchase Item</div></a>
                   <div class="x_content">
                     <div class="table-responsive">
-					<div id="purchaseTableContainer"></div>
+					<div id="stockTableContainer"></div>
 				</div>
 				</div>
                 </div>
