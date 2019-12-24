@@ -105,13 +105,13 @@
                       <li><a href="/sites/showSite">Sites Master</a></li>
                     </ul>
                   </li>
-                  <li><a><i class=""></i>Ghaphical Reports <span class=""></span></a>
+                <!--   <li><a><i class=""></i>Ghaphical Reports <span class=""></span></a>
                     <ul class="nav child_menu">
                     <li><a href="#">Stock Reports</a></li>
                      <li><a href="#">Item  Reports</a></li>
                      <li><a href="#">Purchase  Reports</a></li>
                     </ul>
-                  </li>
+                  </li> -->
  
                 </ul>
               </div>
