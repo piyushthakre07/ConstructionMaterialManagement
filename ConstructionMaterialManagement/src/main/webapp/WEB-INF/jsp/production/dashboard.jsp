@@ -12,7 +12,7 @@
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Dashboard! | </title>
-
+    <script src="/js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -31,6 +31,39 @@
 
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
+    <script>
+    $(document).ready(function() {
+    	getAllItems();
+
+    });
+    function  getAllItems()
+    		{
+    	    	 
+    	 $('#itemId').html('');
+    	    		      $.ajax({
+    	    		             url:'/item/getAllItems',
+    	    		             type:'GET',
+    	    		             dataType:'json',
+    	    		             contentType: "application/json",
+    	    		             success: function (data) {
+    	    		            	
+    	    		            	 $('#itemId').append('<option value="-1">Select</option>');
+    	    		            	 $.each(data,function(key,value){
+    	    		                          $('#itemId').append('<option value="'+value.itemId+'">'+value.itemName+'</option>');
+    	    		                    });
+    	    		             },
+    	    		             error:
+    	    		                function (data) {
+    	    		                   alert(JSON.stringify(data));
+    	    		             }
+    	    		       });
+    	    		
+    	
+    		}
+ 
+    
+   
+    </script>
   </head>
 
   <body class="nav-md">
@@ -46,22 +79,22 @@
           <div class="" >
           <div class="tile_count">
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Contractor</span>
+              <span class="count_top"><i class=""></i> Total Contractor</span>
               <div class="count"><a href="/contractor/showContractor">${totalCount.contractorTtl}</a></div>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Total Vendor</span>
+              <span class="count_top"><i class=""></i> Total Vendor</span>
               <div class="count"><a href="/vendor/showVendor">${totalCount.vendorTtl}</a></div>
               
               
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+              <span class="count_top"><i class=""></i> Total Users</span>
               <div class="count green"><a href="/user/showUser">${totalCount.userTtl}</a></div>
              
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Sites</span>
+              <span class="count_top"><i class=""></i> Total Sites</span>
               <div class="count"><a href="/sites/showSite">${totalCount.sitesTtl}</a></div>
             </div>
           </div>
@@ -75,7 +108,7 @@
            <div class="col-md-6 col-sm-4  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Items Stock</h2>
+                    <h2>Items In Stock</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -94,6 +127,17 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                             	<!-- <div class="form-group row">
+										<label class="control-label col-md-3 col-sm-3 ">Select
+											Items</label>
+										<div class="col-md-6 col-sm-9 ">
+											<select name="item.itemId" id="itemId" class="select2_single form-control"
+												tabindex="-1">
+												<option value="-1">Select</option>
+											</select>
+
+										</div>
+									</div> -->
                     <div id="echart_gauge" style="height:370px;"></div>
                   </div>
                 </div>

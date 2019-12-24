@@ -59,6 +59,13 @@ public class MaterialConsumptionController {
 		return mv;
 	}
 	
+	@GetMapping(value = "/viewDateWiseConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView viewDateWiseConsumption() {
+		ModelAndView mv=new ModelAndView();
+        mv.setViewName("/production/showDatewiseConsumption");
+		return mv;
+	}
+	
 	@GetMapping(value = "/addConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView addPurchaseItem() {
 		ModelAndView mv = new ModelAndView();
@@ -75,8 +82,17 @@ public class MaterialConsumptionController {
 	@GetMapping(value = "/getAllConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getAllConsumption() {
 		List<DailyMaterialConsumptionBean> list = materialConsumptionService.getAllConsumption();
-		return new Gson().toJson(list);
+		return "{\"data\":" +new Gson().toJson(list)+"}";
 	}
+	
+	@PostMapping(value = "/getDateWiseConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getDateWiseConsumption(@RequestBody DailyMaterialConsumptionBean materialConsumptionBeanRequest) {
+		List<DailyMaterialConsumptionBean> list = materialConsumptionService.getDateWiseConsumption(materialConsumptionBeanRequest.getConsumptionDate());
+		return "{\"data\":" +new Gson().toJson(list)+"}";
+	}
+	
+	
+	
 	@PostMapping(value = "/saveMaterialConsumption", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<StatusBean> saveMaterialConsumption(
 			@RequestBody DailyMaterialConsumptionBean materialConsumptionBeanRequest) {

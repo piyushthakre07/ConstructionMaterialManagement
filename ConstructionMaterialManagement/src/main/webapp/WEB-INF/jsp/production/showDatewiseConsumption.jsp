@@ -26,73 +26,79 @@
 
 
 <script>
-$(document).ready(function () {
-	var	consumptionTable;
-	consumptionDatatableTable();
-	function consumptionDatatableTable(){
-		consumptionTable = $('#consumptionTable').DataTable({
-	"ajax": {
-	"url": "/consumption/getAllConsumption",
-	"type": "GET",
-	async:false,
-	"contentType": "application/json; charset=utf-8",
-	},
-	"columns": [             
-	{ "data": "consumptionDateString","bSortable":true, "class":"text-wrap"},
-	{ "data": "contractor.contractorName", "width": "350px", "class":"text-wrap"},
-	{ "data": "sites.siteName","className":'',"bSortable":true},
-	{ "data": "sites.siteAddress","bSortable":true, "class":"text-wrap"},
-	{ "data": "materialCategory.materialCategoryName", "width": "350px", "class":"text-wrap"},
-	{ "data": "item.itemName","bSortable":true, "class":"text-wrap"},
-	{ "data": "item.unit.unitName", "width": "350px", "class":"text-wrap"},
-	{ "data": "consumptionQuantity","bSortable":true, "class":"text-wrap"},
-	{ "data": "approveBy.fullName", "width": "350px", "class":"text-wrap"},
-	{ "data": "workType","bSortable":true, "class":"text-wrap"},
-	{ "data": "remark","bSortable":true, "class":"text-wrap"},
-	],
-	dom: 'Bfrtip',
-    buttons: [
-    	  {
-    	        extend: 'copyHtml5',
-    	        title: 'Material Consumption Details'
-    	    },
-    	    {
-    	        extend: 'excelHtml5',
-    	        title: 'Material Consumption Details'
-    	    },
-    	    {
-    	        extend: 'csvHtml5',
-    	        title: 'Material Consumption Details'
-    	    },
-    	    {
-    	        extend: 'pdfHtml5',
-    	        title: 'Material Consumption Details'
-    	    }
-    ],
-    
-  
-	"bAutoWidth": true,
-	"bSort":true,
-	"bFilter" : true,  
-	"serverSide": false,
-	"bLengthChange": true,
-	"bProcessing": true,
-	"sort": "position",
-	"paging":true,
-	"aaSorting": [[ 0, "desc" ]],
-	"pageLength": 5,
-	"bLengthChange": false,
-	"ordering": true,
-	"pagingType": "simple",
-	"oLanguage": {
-	"oPaginate": { 
-	"sFirst": "First", 
-	"sPrevious": "<i class='fa fa-long-arrow-left' aria-hidden='true'></i> Prev", 
-	"sNext": "Next <i class='fa fa-long-arrow-right' aria-hidden='true'></i>", 
-	"sLast": "Last" 
-	}}});
+function dateWiseConsumptionDatatableTable(){
 	
-	}
+	$('#dateWiseConsumptionTable').DataTable().destroy();
+	dateWiseConsumptionTable = $('#dateWiseConsumptionTable').DataTable({
+"ajax": {
+"url": "/consumption/getDateWiseConsumption",
+"type": "POST",
+async:false,
+"contentType": "application/json; charset=utf-8",
+data: function ( d ){
+	return JSON.stringify({
+		"remark":"","consumptionDate":$("#dateId").val()
+
+	});
+	},
+},
+"columns": [             
+{ "data": "contractorName","bSortable":true, "class":"text-wrap"},
+{ "data": "siteName","bSortable":true, "class":"text-wrap"},
+{ "data": "siteAddress","bSortable":true, "class":"text-wrap"},
+{ "data": "workType","bSortable":true, "class":"text-wrap"},
+{ "data": "materialCategoryName","bSortable":true, "class":"text-wrap"},
+{ "data": "itemName","bSortable":true, "class":"text-wrap"},
+{ "data": "quantity","bSortable":true, "class":"text-wrap"},
+{ "data": "unitName","bSortable":true, "class":"text-wrap"}
+
+],
+dom: 'Bfrtip',
+buttons: [
+	  {
+	        extend: 'copyHtml5',
+	        title: 'Datewise Consumption Details'
+	    },
+	    {
+	        extend: 'excelHtml5',
+	        title: 'Datewise Consumption Details'
+	    },
+	    {
+	        extend: 'csvHtml5',
+	        title: 'Datewise Consumption Details'
+	    },
+	    {
+	        extend: 'pdfHtml5',
+	        title: 'Datewise Consumption Details'
+	    }
+],
+
+
+"bAutoWidth": true,
+"bSort":true,
+"bFilter" : true,  
+"serverSide": false,
+"bLengthChange": true,
+"bProcessing": true,
+"sort": "position",
+"paging":true,
+"aaSorting": [[ 0, "desc" ]],
+"pageLength": 5,
+"bLengthChange": false,
+"ordering": true,
+"pagingType": "simple",
+"oLanguage": {
+"oPaginate": { 
+"sFirst": "First", 
+"sPrevious": "<i class='fa fa-long-arrow-left' aria-hidden='true'></i> Prev", 
+"sNext": "Next <i class='fa fa-long-arrow-right' aria-hidden='true'></i>", 
+"sLast": "Last" 
+}}});
+
+}
+$(document).ready(function () {
+	var	dateWiseConsumptionTable;
+	dateWiseConsumptionDatatableTable();
 
 });
 
@@ -115,25 +121,22 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Material Consumption Details</h2>
-                    <div class="clearfix"></div>
+                    <h2>Datewise Consumption Details</h2>
+                   <div align="right">
+                  <input type="date" id="dateId" onchange="dateWiseConsumptionDatatableTable();">
                   </div>
-                  <table id="consumptionTable"  class="table table-striped jambo_table bulk_action"> 
+                  </div>
+                  <table id="dateWiseConsumptionTable"  class="table table-striped jambo_table bulk_action"> 
 		           <thead>
-		     
 		            <tr>
-		               
-		                <th>Date</th>
 		                <th>Contractor Name</th>
 		                <th>Site Name</th>
 		                <th>Site Address</th>
+		                <th>Type of Work</th>
 		                <th>Material Category Name</th>
 		                <th>Item Name</th>
-		                <th>Unit</th>
 		                <th>Quantity</th>
-		                <th>Approve By</th>
-		                <th>Work Type</th>
-		                <th>Remark</th>
+		                 <th>Unit</th>
 		            </tr>
 		          </thead>
                   </table>

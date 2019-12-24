@@ -1,8 +1,11 @@
 package com.app.module.dailyconsumer.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -25,6 +28,7 @@ import com.app.model.MaterialCategory;
 import com.app.model.Sites;
 import com.app.model.User;
 import com.app.module.dailyconsumer.dao.IMaterialConsumptionDao;
+import com.app.module.dailyconsumer.dao.impl.MaterialConsumptionDaoImpl;
 import com.app.module.dailyconsumer.service.IMaterialConsumptionService;
 import com.app.module.stockdetails.service.IStockService;
 import com.app.utility.GenericConstant;
@@ -37,6 +41,9 @@ public class MaterialConsumptionImpl implements IMaterialConsumptionService {
 	
 	@Autowired
 	IStockService stockService;
+	
+	@Autowired
+	MaterialConsumptionDaoImpl materialConsumptionDaoImpl;
 
 	@Override
 	public StatusBean saveMaterialConsumption(DailyMaterialConsumptionBean materialConsumptionBeanRequest) {
@@ -123,6 +130,16 @@ public class MaterialConsumptionImpl implements IMaterialConsumptionService {
 			return consumptionBean;
 		}).collect(Collectors.toCollection(ArrayList::new));
 	
+	}
+	
+	@Override
+	public List<DailyMaterialConsumptionBean> getDateWiseConsumption(Date date) {
+		if(date==null) {
+			date=new Date();
+		}
+		
+		List<DailyMaterialConsumptionBean> listConsumptionBean = materialConsumptionDaoImpl.getAllMaterialConsumption(new SimpleDateFormat("yyyy-MM-dd").format(date));
+		return listConsumptionBean;
 	}
 
 }

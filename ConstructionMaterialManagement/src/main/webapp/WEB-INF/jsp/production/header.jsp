@@ -37,7 +37,7 @@
 	<link href='/jsgrid/jquery-ui.css' rel='stylesheet'
 		type='text/css' />
 		
-    <script src="/js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="/js/jquery-3.3.1.min.js"></script> -->
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
       <div class="col-md-3 left_col">
@@ -70,11 +70,11 @@
                   <li><a  href="/home/dashboard"><i class=""></i> Home <span ></span></a>
                    
                   </li>
-                   <li><a><i class=""></i> Daily Consumption Details <span class=""></span></a>
+                   <li><a><i class=""></i> Item Consumption <span class=""></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/consumption/addConsumption">Add Item Consumption</a></li>
                        <li><a href="/consumption/viewConsumption">Item Consumption Details</a></li>
-                      <li><a href="form.html">Daily Consumption Reports</a></li>
+                      <li><a href="/consumption/viewDateWiseConsumption">Datewise Consumption Reports</a></li>
                     </ul>
                   </li>
                    <li><a><i class=""></i>Stock <span class=""></span></a>
