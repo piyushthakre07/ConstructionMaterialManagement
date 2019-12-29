@@ -18,7 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.UserBean;
+import com.app.beans.VendorBean;
+import com.app.beans.ItemsBean;
+import com.app.beans.RoleBean;
 import com.app.beans.StatusBean;
+import com.app.module.master.service.IRoleService;
 import com.app.module.master.service.IUserService;
 import com.google.gson.Gson;
 
@@ -28,11 +32,23 @@ public class UserController {
 
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	IRoleService roleService;
 
 	@GetMapping(value = "/showUser", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView showVendor() {
 		ModelAndView mv=new ModelAndView();
         mv.setViewName("/production/userMaster");
+		return mv;
+	}
+	
+	@GetMapping(value = "/addUser", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView addPurchaseItem() {
+		ModelAndView mv=new ModelAndView();
+	    List<RoleBean> roleBeanList=roleService.getAllRole();
+	    mv.addObject("role", roleBeanList);
+	    mv.setViewName("/production/addUser");
 		return mv;
 	}
 	

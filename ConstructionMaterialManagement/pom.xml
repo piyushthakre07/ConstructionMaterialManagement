@@ -11,9 +11,9 @@
 	</parent>
 	<groupId>com.app</groupId>
 	<artifactId>ConstructionMaterialManagement</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ConstructionMaterialManagement</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Construction Material Management</description>
 
 	<properties>
 		<java.version>1.8</java.version>

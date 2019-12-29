@@ -43,7 +43,7 @@ $(document).ready(function () {
 	       sorting: true,
 	       paging: true,
 	       autoload: true,
-	       inserting: true,
+	       inserting: false,
 	       deleting:true,
 	       pageSize: 5,
 	       pageButtonCount: 5,
@@ -118,8 +118,7 @@ $(document).ready(function () {
 	    	       { name: "userId", type: "hidden",  width:75, title: "User Id"},
 	    	       { name: "fullName", type: "text",  width:75, title: "Full Name"},
 	    	       { name: "userName", type: "text",  width:75, title: "User Name"},
-	    	       { name: "password", type: "text",  width:75, title: "Password"},
-	    	       
+	    	     /*   { name: "password", type: "text",  width:75, title: "Password"}, */
 	    	       { name: "role.roleId", type: "select", items:objectDataRole, valueField: "Id",textField: "Name",  width:75, title: "Role"},
 	    	       { type: "control" } 
 		       ]

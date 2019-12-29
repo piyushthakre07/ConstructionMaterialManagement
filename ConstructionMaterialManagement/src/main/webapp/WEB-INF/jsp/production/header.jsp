@@ -93,6 +93,12 @@
                     <li><a href="#">Return Item</a></li>
                     </ul>
                   </li>
+                     <li><a><i class=""></i>User <span class=""></span></a>
+                    <ul class="nav child_menu">
+                    <li><a href="/user/addUser">Add User</a></li>
+                    <li><a href="/user/showUser">Show User</a></li>
+                    </ul>
+                  </li>
                   <li><a><i class=""></i> Masters <span class=""></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/units/showUnits">Units Master</a></li>
@@ -100,7 +106,7 @@
                       <li><a href="/item/showItems">Items Master</a></li>
                       <li><a href="/vendor/showVendor">Vendor Master</a></li>
                       <li><a href="/role/showRole">Role Master</a></li>
-                      <li><a href="/user/showUser">User Master</a></li>
+                      <!-- <li><a href="/user/showUser">User Master</a></li> -->
                       <li><a href="/contractor/showContractor">Contractor Master</a></li>
                       <li><a href="/sites/showSite">Sites Master</a></li>
                     </ul>
