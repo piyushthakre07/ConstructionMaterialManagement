@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.ItemsBean;
 import com.app.beans.StatusBean;
+import com.app.module.master.service.IContractorService;
 import com.app.module.master.service.IItemsService;
 import com.google.gson.Gson;
 
@@ -28,6 +29,10 @@ public class ItemsController {
 
 	@Autowired
 	IItemsService itemsService;
+	
+
+	@Autowired
+	IContractorService contractorService;
 	
 	@GetMapping(value = "/showItems", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView showItems() {

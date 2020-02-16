@@ -16,28 +16,24 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @Slf4j
 public class LogginAspect {
-
-	@Pointcut(value = "execution(* com.app.module.*.*.*(..))")
-	public void myPointcut() {
-		// point cut for intercept request for com.app.module
-	}
-
-	@Before("myPointcut()")
-	public void before(JoinPoint joinPoint) {
-		log.info("Start Class :" + joinPoint.getTarget().getClass() + " :: Method Name: "
-				+ joinPoint.getSignature().getName() + " ::Arguments:" + Arrays.toString(joinPoint.getArgs()));
-	}
-
-	@After("myPointcut()")
-	public void after(JoinPoint joinPoint) {
-		log.info("End Class :" + joinPoint.getTarget().getClass() + ":: Method Name: "
-				+ joinPoint.getSignature().getName());
-	}
-	
-    @AfterThrowing(pointcut = "execution(* com.app.module.*.*.*(..))", throwing = "ex")
-    public void logError(JoinPoint joinPoint,Exception ex) {
-    	log.error("Error Class :" + joinPoint.getTarget().getClass() + ":: Method Name: "
-				+ joinPoint.getSignature().getName()+"::Error: "+ex.getMessage());
-    }
-
-}
+	/*
+	 * 
+	 * @Pointcut(value = "execution(* com.app.module.*.*.*(..))") public void
+	 * myPointcut() { // point cut for intercept request for com.app.module }
+	 * 
+	 * @Before("myPointcut()") public void before(JoinPoint joinPoint) {
+	 * log.info("Start Class :" + joinPoint.getTarget().getClass() +
+	 * " :: Method Name: " + joinPoint.getSignature().getName() + " ::Arguments:" +
+	 * Arrays.toString(joinPoint.getArgs())); }
+	 * 
+	 * @After("myPointcut()") public void after(JoinPoint joinPoint) {
+	 * log.info("End Class :" + joinPoint.getTarget().getClass() +
+	 * ":: Method Name: " + joinPoint.getSignature().getName()); }
+	 * 
+	 * @AfterThrowing(pointcut = "execution(* com.app.module.*.*.*(..))", throwing =
+	 * "ex") public void logError(JoinPoint joinPoint,Exception ex) {
+	 * log.error("Error Class :" + joinPoint.getTarget().getClass() +
+	 * ":: Method Name: " +
+	 * joinPoint.getSignature().getName()+"::Error: "+ex.getMessage()); }
+	 * 
+	 */}

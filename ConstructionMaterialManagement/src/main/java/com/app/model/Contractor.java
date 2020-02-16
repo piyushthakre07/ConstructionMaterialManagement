@@ -50,4 +50,5 @@ public class Contractor {
 	@UpdateTimestamp
 	@Column(name = "modify_date")
 	private Date modifyDate;
+	
 }
