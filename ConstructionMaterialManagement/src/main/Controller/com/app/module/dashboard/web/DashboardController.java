@@ -17,6 +17,13 @@ public class DashboardController {
 	@Autowired
 	ICommonMasterService commonMasterService;
 	
+	/*
+	 * @ApiOperation(value = "Update Membership", response = ModelAndView.class)
+	 * 
+	 * @ApiResponses(value = {
+	 * 
+	 * @ApiResponse(code = 200, message = "Membership updated sucessfully"), })
+	 */
 	@GetMapping(value = "/dashboard", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView getAllItems() {
 		ModelAndView mv=new ModelAndView();

@@ -61,10 +61,6 @@ $(document).ready(function () {
 		           { name: "quantity", type: "hidden",  width:75, title: "Quantity"},
 		           { name: "remark", type: "hidden",  width:75, title: "Remark"}
 		       ]
-	      
-		      
-			
-	
 	
 }); 
 });
